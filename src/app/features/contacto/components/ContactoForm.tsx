@@ -1,13 +1,8 @@
-import { useState } from "react";
+import { ContactoField } from "./ContactoField";
+import { useContactoForm } from "../hooks/useContactoForm";
 
 export function ContactoForm() {
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setTimeout(() => setSubmitting(false), 800);
-  };
+  const { submitting, handleSubmit } = useContactoForm();
 
   return (
     <form
@@ -21,14 +16,11 @@ export function ContactoForm() {
         borderBottomRightRadius: 0,
       }}
     >
-      <Field label="Nombre" name="nombre" type="text" required />
-      <Field label="Empresa" name="empresa" type="text" required />
-      <Field label="Email" name="email" type="email" required />
+      <ContactoField label="Nombre" name="nombre" type="text" required />
+      <ContactoField label="Empresa" name="empresa" type="text" required />
+      <ContactoField label="Email" name="email" type="email" required />
       <div className="flex flex-col gap-2">
-        <label
-          htmlFor="reto"
-          className="text-sm font-semibold text-white"
-        >
+        <label htmlFor="reto" className="text-sm font-semibold text-white">
           Cuéntanos tu reto
         </label>
         <textarea
@@ -47,29 +39,5 @@ export function ContactoForm() {
         {submitting ? "Enviando..." : "Agendar diagnostico"}
       </button>
     </form>
-  );
-}
-
-type FieldProps = {
-  label: string;
-  name: string;
-  type: string;
-  required?: boolean;
-};
-
-function Field({ label, name, type, required }: FieldProps) {
-  return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="text-sm font-semibold text-white">
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        className="w-full h-11 rounded-full bg-white text-black text-sm px-4 outline-none focus:ring-2 focus:ring-[#43C3FF]/60"
-      />
-    </div>
   );
 }

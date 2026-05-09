@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import type { Faq } from "../data/faqs";
+import { useFaqHeight } from "../hooks/useFaqHeight";
 
 type Props = {
   faq: Faq;
@@ -9,13 +10,7 @@ type Props = {
 
 export function FaqItem({ faq, isOpen, onToggle }: Props) {
   const answerRef = useRef<HTMLDivElement>(null);
-  const [maxH, setMaxH] = useState(0);
-
-  useEffect(() => {
-    const el = answerRef.current;
-    if (!el) return;
-    setMaxH(isOpen ? el.scrollHeight : 0);
-  }, [isOpen, faq.a]);
+  const maxH = useFaqHeight(answerRef, isOpen, [faq.a]);
 
   return (
     <div className="border-b border-white/15 last:border-b-0">
@@ -52,7 +47,10 @@ export function FaqItem({ faq, isOpen, onToggle }: Props) {
         className="overflow-hidden transition-all duration-400 ease-out"
         style={{ maxHeight: maxH, opacity: isOpen ? 1 : 0 }}
       >
-        <div ref={answerRef} className="px-2 pb-5 sm:pb-6 text-sm text-white/75 leading-relaxed">
+        <div
+          ref={answerRef}
+          className="px-2 pb-5 sm:pb-6 text-sm text-white/75 leading-relaxed"
+        >
           {faq.a}
         </div>
       </div>

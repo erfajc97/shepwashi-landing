@@ -9,11 +9,6 @@ type Options = {
   rootRef: RefObject<HTMLElement | null>;
   slideSelector: string;
   scrub?: number;
-  /**
-   * Optional callback that receives the timeline + slide elements + transitions count.
-   * Use it to attach extra tweens (e.g. butterfly fade, sidebar highlight).
-   * Run BEFORE the swap animations so its tweens land at the correct timeline positions.
-   */
   onTimeline?: (params: {
     timeline: gsap.core.Timeline;
     slides: HTMLElement[];
@@ -21,11 +16,6 @@ type Options = {
   }) => void;
 };
 
-/**
- * Pin a section + scrub a stacked-slides timeline.
- * Slide N enters from below (yPercent 100 → 0) while slide N-1 exits upward.
- * Subtle rotateX gives a "View-Master wheel" feel.
- */
 export function useStackedSlidesPin({
   rootRef,
   slideSelector,
@@ -55,12 +45,14 @@ export function useStackedSlidesPin({
         scrollTrigger: {
           trigger: root,
           start: "top top",
-          end: () => `+=${window.innerHeight * transitions}`,
+          end: `+=${transitions * 100}%`,
           pin: true,
           pinSpacing: true,
           scrub,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
         },
         defaults: { ease: "power2.inOut" },
       });

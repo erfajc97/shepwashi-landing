@@ -50,6 +50,8 @@ export default function CasoReferencia() {
         src="/images/bg-evento-luntriqa.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
         style={{ objectPosition: "center top" }}
         draggable={false}
@@ -76,6 +78,8 @@ export default function CasoReferencia() {
           <img
             src="/images/ShepwashiOfficialLogobig.png"
             alt="Shepwashi"
+            loading="lazy"
+            decoding="async"
             className="h-7 sm:h-8 md:h-9 w-auto object-contain select-none"
             draggable={false}
           />

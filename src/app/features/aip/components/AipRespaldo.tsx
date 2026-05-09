@@ -17,6 +17,8 @@ export default function AipRespaldo() {
         src="/images/bg-desktop.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
@@ -30,6 +32,8 @@ export default function AipRespaldo() {
         src="/images/globo.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute top-1/2 -translate-y-1/2 right-0 pointer-events-none select-none opacity-70 md:opacity-90"
         style={{
           width: "min(75vw, 820px)",
@@ -44,6 +48,8 @@ export default function AipRespaldo() {
           data-aip-reveal
           src="/images/AIP.png"
           alt="AIP — Alianza Insurtech Panamericana"
+          loading="lazy"
+          decoding="async"
           className="w-32 sm:w-40 md:w-48 h-auto mb-6 md:mb-8"
           draggable={false}
         />
@@ -75,6 +81,8 @@ export default function AipRespaldo() {
           data-aip-reveal
           src="/images/people.png"
           alt="Equipo Alianza Insurtech Panamericana"
+          loading="lazy"
+          decoding="async"
           className="mt-8 md:mt-10 w-full max-w-lg h-auto rounded-xl mx-auto"
           draggable={false}
         />

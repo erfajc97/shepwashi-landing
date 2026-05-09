@@ -22,6 +22,8 @@ export default function ProcesoClaro() {
         src="/images/bg-desktop.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover opacity-70"
         draggable={false}
       />

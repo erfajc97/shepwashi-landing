@@ -83,3 +83,23 @@ img { display: block; }
 /* Hide scrollbar inside intro overlay */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+/* Servicio carousel keyframes */
+@keyframes servicio-card-enter {
+  0%   { opacity: 0; transform: translateY(22px) scale(0.985); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0)    scale(1);     filter: blur(0); }
+}
+@keyframes servicio-bullet-enter {
+  0%   { opacity: 0; transform: translateX(-12px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

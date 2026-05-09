@@ -13,6 +13,8 @@ export function ProcesoStackSlide({ slide }: Props) {
         <img
           src="/images/luntriqa.png"
           alt="Luntriqa"
+          loading="lazy"
+          decoding="async"
           className="absolute top-6 right-6 sm:top-8 sm:right-10 h-7 sm:h-9 md:h-11 w-auto object-contain opacity-85 select-none"
           draggable={false}
         />

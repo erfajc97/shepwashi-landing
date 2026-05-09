@@ -5,6 +5,8 @@ export function ProcesoStackButterfly() {
       src="/images/butterfly.png"
       alt=""
       aria-hidden="true"
+      loading="lazy"
+      decoding="async"
       className="pointer-events-none absolute select-none"
       style={{
         left: "50%",

@@ -21,6 +21,8 @@ export default function ServiciosPotenciar() {
         src="/images/bg-desktop.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover opacity-70"
         style={{ objectPosition: "center top" }}
         draggable={false}

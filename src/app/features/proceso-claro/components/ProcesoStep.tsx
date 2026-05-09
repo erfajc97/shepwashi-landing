@@ -52,6 +52,8 @@ export function ProcesoStepRow({ step, textRight }: Props) {
           <img
             src={step.image}
             alt={step.title}
+            loading="lazy"
+            decoding="async"
             className="block w-full h-auto"
             draggable={false}
           />

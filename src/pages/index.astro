@@ -16,19 +16,19 @@ import Footer from "@/app/features/footer/components/Footer";
 ---
 
 <BaseLayout title="Shepwashi — Plataformas seguras con IA">
-  <SmoothScroll client:load />
+  <SmoothScroll client:idle />
   <IntroVideo client:load />
   <Navbar client:load />
   <main>
     <Hero client:load />
-    <EventParallax client:load />
-    <CuatroEnfoques client:load />
-    <CasoReferencia client:load />
-    <ProcesoStack client:load />
-    <ProcesoClaro client:load />
-    <ServiciosPotenciar client:load />
-    <AipRespaldo client:load />
-    <ContactoFaq client:load />
+    <EventParallax client:visible />
+    <CuatroEnfoques client:visible />
+    <CasoReferencia client:visible />
+    <ProcesoStack client:visible />
+    <ProcesoClaro client:visible />
+    <ServiciosPotenciar client:visible />
+    <AipRespaldo client:visible />
+    <ContactoFaq client:visible />
   </main>
-  <Footer client:load />
+  <Footer client:visible />
 </BaseLayout>

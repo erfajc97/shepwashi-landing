@@ -22,6 +22,8 @@ export function ServicioImagenes({ servicios }: Props) {
           <img
             src={s.image}
             alt={s.title}
+            loading="lazy"
+            decoding="async"
             className="block w-full h-auto select-none"
             draggable={false}
           />

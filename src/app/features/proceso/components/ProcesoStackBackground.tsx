@@ -5,6 +5,8 @@ export function ProcesoStackBackground() {
         src="/images/bg-desktop.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: "center top" }}
         draggable={false}

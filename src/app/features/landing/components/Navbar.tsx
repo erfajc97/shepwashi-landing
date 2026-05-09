@@ -32,6 +32,8 @@ export default function Navbar() {
             <img
               src="/images/ShepwashiOfficialLogobig.png"
               alt="Shepwashi"
+              decoding="async"
+              fetchPriority="high"
               className="h-full w-auto object-contain"
               draggable={false}
             />

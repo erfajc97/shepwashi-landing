@@ -19,6 +19,8 @@ export function ProcesoStackSidebar({ thumbs }: Props) {
               src={src}
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover opacity-70"
               draggable={false}
             />

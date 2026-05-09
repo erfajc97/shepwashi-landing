@@ -22,14 +22,26 @@ const {
     />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#000000" />
-    <link rel="icon" type="image/png" href="/images/butterfly.png" />
+    <link rel="icon" type="image/png" href="/images/AIP.png" />
     <title>{title}</title>
 
     <!-- Body + Jumeture-like fallback (Saira Stencil One — geometric/stencil) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Saira+Stencil+One&display=swap"
+      rel="preload"
+      as="image"
+      href="/images/bg-primary.png"
+      media="(max-width: 767px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/bg-desktop.png"
+      media="(min-width: 768px)"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Saira+Stencil+One&display=swap"
       rel="stylesheet"
     />
   </head>

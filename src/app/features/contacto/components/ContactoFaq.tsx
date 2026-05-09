@@ -21,6 +21,8 @@ export default function ContactoFaq() {
         src="/images/bg-desktop.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
@@ -34,7 +36,9 @@ export default function ContactoFaq() {
         src="/images/butterfly.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute select-none"
+        loading="lazy"
+        decoding="async"
+        className="pointer-events-none absolute select-none z-1"
         style={{
           left: "50%",
           top: "55%",
@@ -42,7 +46,6 @@ export default function ContactoFaq() {
           width: "min(100vw, 900px)",
           opacity: 0.18,
           filter: "blur(1px) brightness(0.7)",
-          zIndex: 1,
         }}
         draggable={false}
       />
