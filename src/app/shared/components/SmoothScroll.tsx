@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scheduleScrollRefresh } from "../animations/scrollCoordinator";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,19 +22,15 @@ export default function SmoothScroll() {
     gsap.ticker.add(tickerCb);
     gsap.ticker.lagSmoothing(0);
 
-    // Global refresh after all components have mounted and images load.
-    // This ensures pinned sections + downstream triggers measure correctly.
-    const refresh = () => ScrollTrigger.refresh();
-    const timers = [
-      window.setTimeout(refresh, 300),
-      window.setTimeout(refresh, 1200),
-      window.setTimeout(refresh, 2500),
-    ];
-    window.addEventListener("load", refresh);
+    // Single coordinator-driven refresh strategy.
+    // Components register their own image listeners; the coordinator debounces.
+    const onLoad = () => scheduleScrollRefresh();
+    window.addEventListener("load", onLoad);
+    const initialRefresh = window.setTimeout(scheduleScrollRefresh, 400);
 
     return () => {
-      window.removeEventListener("load", refresh);
-      timers.forEach((id) => window.clearTimeout(id));
+      window.removeEventListener("load", onLoad);
+      window.clearTimeout(initialRefresh);
       gsap.ticker.remove(tickerCb);
       lenis.destroy();
     };

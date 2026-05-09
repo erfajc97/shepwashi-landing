@@ -1,36 +1,26 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gradientTextHorizontal } from "@/app/shared/styles/textGradients";
+import { useFadeUpOnScroll } from "@/app/shared/animations/useFadeUpOnScroll";
+import { SCRUB_MEDIUM } from "@/app/shared/animations/animationDefaults";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const linearText = {
-  backgroundImage: "linear-gradient(90deg, #43C3FF 0%, #FFFFFF 100%)",
-  WebkitBackgroundClip: "text",
-  backgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  color: "transparent",
-} as const;
 
 export default function CasoReferencia() {
   const rootRef = useRef<HTMLElement>(null);
 
+  useFadeUpOnScroll({
+    rootRef,
+    selector: "[data-caso-anim]",
+    y: 24,
+    duration: 1.2,
+    stagger: 0.14,
+    start: "top 80%",
+  });
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from("[data-caso-anim]", {
-        autoAlpha: 0,
-        y: 24,
-        duration: 1.2,
-        ease: "power2.out",
-        stagger: 0.14,
-        scrollTrigger: {
-          trigger: rootRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      // bg parallax zoom
       gsap.fromTo(
         "[data-caso-bg]",
         { scale: 1.12 },
@@ -41,7 +31,7 @@ export default function CasoReferencia() {
             trigger: rootRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1.2,
+            scrub: SCRUB_MEDIUM,
           },
         }
       );
@@ -69,7 +59,6 @@ export default function CasoReferencia() {
         className="absolute inset-0"
         style={{ backgroundColor: "rgba(0,0,0,0.35)" }}
       />
-      {/* Bottom edge bleed — connects visually with next section */}
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-32 sm:h-40 pointer-events-none"
@@ -80,7 +69,6 @@ export default function CasoReferencia() {
       />
 
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 text-center">
-        {/* Header row: logo | divider | tagline */}
         <div
           data-caso-anim
           className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
@@ -97,18 +85,17 @@ export default function CasoReferencia() {
           />
           <span
             className="font-semibold text-sm sm:text-base md:text-lg"
-            style={linearText}
+            style={gradientTextHorizontal}
           >
             Conozca nuestro caso referencia
           </span>
         </div>
 
-        {/* Title */}
         <h2
           data-caso-anim
           className="font-heading uppercase max-w-5xl"
           style={{
-            ...linearText,
+            ...gradientTextHorizontal,
             fontSize: "clamp(2rem, 6.5vw, 5.5rem)",
             letterSpacing: "0.02em",
             lineHeight: 1.05,
@@ -117,12 +104,11 @@ export default function CasoReferencia() {
           Modulo &quot;Ventas al piso&quot; (Fintech)
         </h2>
 
-        {/* Description */}
         <p
           data-caso-anim
           className="mt-6 md:mt-8 max-w-3xl italic font-medium leading-relaxed"
           style={{
-            ...linearText,
+            ...gradientTextHorizontal,
             fontSize: "clamp(0.95rem, 1.6vw, 1.25rem)",
           }}
         >
