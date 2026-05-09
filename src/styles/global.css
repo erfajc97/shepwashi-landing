@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ── JUMETURE fonts ────────────────────────────────
+   Font files go in /public/fonts/. If user doesn't supply
+   .woff2 the @font-face silently fails and the fallback
+   stack (Bank Gothic / Impact / sans-serif) takes over.
+   ────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Jumeture";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Jumeture.woff2") format("woff2"),
+       url("/fonts/Jumeture.woff") format("woff"),
+       url("/fonts/Jumeture.ttf") format("truetype"),
+       url("/fonts/Jumeture.otf") format("opentype");
+}
+
+@theme {
+  /* ── Brand colors (Shepwashi) ───────────────────── */
+  --color-bg:              #000000;
+  --color-surface:         #0A0A0A;
+  --color-surface-raised:  #141414;
+  --color-accent:          #FF7A1A;
+  --color-accent-hover:    #FF8F3D;
+  --color-cyan:            #5CC6F0;
+  --color-cyan-2:          #8B6CFF;
+  --color-text:            #FFFFFF;
+  --color-text-muted:      #B0B0B0;
+  --color-border:          #2A2A2A;
+  --color-error:           #E05252;
+  --color-success:         #4CAF50;
+
+  /* ── Typography ────────────────────────────────── */
+  --font-heading: "Jumeture", "Saira Stencil One", "Bank Gothic", "Impact", sans-serif;
+  --font-body:    "Inter", "Helvetica Neue", system-ui, sans-serif;
+
+  /* ── Radii ─────────────────────────────────────── */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+}
+
+/* ── Base reset ─────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+/* Lock scroll while intro video plays */
+html.intro-locked,
+html.intro-locked body {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+img { display: block; }
+
+/* Hide scrollbar inside intro overlay */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }

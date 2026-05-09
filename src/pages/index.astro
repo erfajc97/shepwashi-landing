@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import IntroVideo from "@/app/features/intro/components/IntroVideo";
+import SmoothScroll from "@/app/shared/components/SmoothScroll";
+import Navbar from "@/app/features/landing/components/Navbar";
+import Hero from "@/app/features/landing/components/Hero";
+import EventParallax from "@/app/features/event/components/EventParallax";
+import CuatroEnfoques from "@/app/features/enfoques/components/CuatroEnfoques";
+import CasoReferencia from "@/app/features/caso/components/CasoReferencia";
+import ProcesoStack from "@/app/features/proceso/components/ProcesoStack";
+import ProcesoClaro from "@/app/features/proceso-claro/components/ProcesoClaro";
+---
+
+<BaseLayout title="Shepwashi — Plataformas seguras con IA">
+  <SmoothScroll client:load />
+  <IntroVideo client:load />
+  <Navbar client:load />
+  <main>
+    <Hero client:load />
+    <EventParallax client:load />
+    <CuatroEnfoques client:load />
+    <CasoReferencia client:load />
+    <ProcesoStack client:load />
+    <ProcesoClaro client:load />
+  </main>
+</BaseLayout>

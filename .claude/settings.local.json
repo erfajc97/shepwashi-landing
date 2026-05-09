@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills *)",
+      "Read(//c/Users/erick/Documents/DevelomentCorp/shepwashi/**)",
+      "Bash(rmdir shewashi-landing-page *)",
+      "PowerShell(npm create astro@latest . -- --template minimal --typescript strict --install --no-git --skip-houston --yes 2>&1)"
+    ]
+  }
+}
