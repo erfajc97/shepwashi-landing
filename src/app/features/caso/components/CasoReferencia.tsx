@@ -17,19 +17,18 @@ export default function CasoReferencia() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray<HTMLElement>("[data-caso-anim]");
-      gsap.set(items, { autoAlpha: 0, y: 22 });
-
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: "top 78%",
-            once: true,
-          },
-          defaults: { ease: "power2.out", duration: 1.2 },
-        })
-        .to(items, { autoAlpha: 1, y: 0, stagger: 0.14 });
+      gsap.from("[data-caso-anim]", {
+        autoAlpha: 0,
+        y: 24,
+        duration: 1.2,
+        ease: "power2.out",
+        stagger: 0.14,
+        scrollTrigger: {
+          trigger: rootRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
 
       // bg parallax zoom
       gsap.fromTo(

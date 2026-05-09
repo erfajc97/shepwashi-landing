@@ -66,9 +66,16 @@ export default function ProcesoStack() {
 
       const transitions = slides.length - 1; // number of swaps
 
-      // initial state
-      gsap.set(slides, { yPercent: 100, autoAlpha: 0 });
-      gsap.set(slides[0], { yPercent: 0, autoAlpha: 1 });
+      // initial state — slides stacked, only first centered
+      // Others wait below, tilted toward viewer (View-Master wheel feel)
+      slides.forEach((slide, i) => {
+        gsap.set(slide, {
+          yPercent: i === 0 ? 0 : 100,
+          rotationX: i === 0 ? 0 : 55,
+          autoAlpha: i === 0 ? 1 : 0,
+          transformOrigin: "center center",
+        });
+      });
       gsap.set(butterfly, { autoAlpha: 0, scale: 1.06 });
 
       // pin + scrub timeline
@@ -84,20 +91,20 @@ export default function ProcesoStack() {
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
-        defaults: { ease: "none" },
+        defaults: { ease: "power2.inOut" },
       });
 
       for (let i = 0; i < transitions; i++) {
-        // outgoing slide: exit fully UPWARD
+        // outgoing: rotates up and away (over the top of the wheel)
         tl.to(
           slides[i],
-          { yPercent: -100, autoAlpha: 0 },
+          { yPercent: -100, rotationX: -55, autoAlpha: 0 },
           i
         );
-        // incoming slide: rise from below
+        // incoming: rises from below, tilts to flat (visible at center)
         tl.to(
           slides[i + 1],
-          { yPercent: 0, autoAlpha: 1 },
+          { yPercent: 0, rotationX: 0, autoAlpha: 1 },
           i
         );
       }
@@ -207,23 +214,36 @@ export default function ProcesoStack() {
         </div>
       </div>
 
-      {/* Stacked slides */}
-      <div className="relative z-20 h-full w-full">
-        {slidesAll.map((s, i) => {
-          const isFinal = i === slidesAll.length - 1;
-          return (
-            <div
-              key={i}
-              data-stack-slide
-              className="absolute inset-0 w-full h-full will-change-transform"
-            >
-              {!isFinal && (
-                <SlideContent slide={s as Slide} />
-              )}
-              {isFinal && <FinalSlide slide={s} />}
-            </div>
-          );
-        })}
+      {/* 3D Cylinder Carousel — slides rotate around X axis like a Kodak slide wheel */}
+      <div
+        className="relative z-20 h-full w-full"
+        style={{ perspective: "1800px", perspectiveOrigin: "center center" }}
+      >
+        <div
+          data-stack-cylinder
+          className="absolute inset-0 w-full h-full"
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          {slidesAll.map((s, i) => {
+            const isFinal = i === slidesAll.length - 1;
+            return (
+              <div
+                key={i}
+                data-stack-slide
+                className="absolute inset-0 w-full h-full will-change-transform"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                {!isFinal && (
+                  <SlideContent slide={s as Slide} />
+                )}
+                {isFinal && <FinalSlide slide={s} />}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

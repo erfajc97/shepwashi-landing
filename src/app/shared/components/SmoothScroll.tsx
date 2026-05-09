@@ -21,7 +21,19 @@ export default function SmoothScroll() {
     gsap.ticker.add(tickerCb);
     gsap.ticker.lagSmoothing(0);
 
+    // Global refresh after all components have mounted and images load.
+    // This ensures pinned sections + downstream triggers measure correctly.
+    const refresh = () => ScrollTrigger.refresh();
+    const timers = [
+      window.setTimeout(refresh, 300),
+      window.setTimeout(refresh, 1200),
+      window.setTimeout(refresh, 2500),
+    ];
+    window.addEventListener("load", refresh);
+
     return () => {
+      window.removeEventListener("load", refresh);
+      timers.forEach((id) => window.clearTimeout(id));
       gsap.ticker.remove(tickerCb);
       lenis.destroy();
     };

@@ -219,10 +219,24 @@ export default function CuatroEnfoques() {
             >
               {/* Image wrap (so badge/tag align to image bounds) */}
               <div className="relative w-full">
+                {/* Top-right spotlight glow behind image */}
+                <div
+                  aria-hidden="true"
+                  className="absolute pointer-events-none rounded-full -z-10"
+                  style={{
+                    top: "-30%",
+                    right: "-25%",
+                    width: "60%",
+                    aspectRatio: "1 / 1",
+                    background:
+                      "radial-gradient(circle, rgba(33,144,255,0.55) 0%, rgba(33,144,255,0.2) 45%, rgba(33,144,255,0) 75%)",
+                    filter: "blur(20px)",
+                  }}
+                />
                 <img
                   src={e.image}
                   alt={e.tag}
-                  className="block w-full h-auto select-none"
+                  className="block w-full h-auto select-none relative"
                   draggable={false}
                 />
 

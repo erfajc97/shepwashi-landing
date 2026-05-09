@@ -47,30 +47,18 @@ const gradientText = {
 
 export default function ProcesoClaro() {
   const rootRef = useRef<HTMLElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
-  const headRefs = useRef<HTMLElement[]>([]);
-  const stepRefs = useRef<{
-    step: HTMLElement;
-    content: HTMLElement;
-    image: HTMLElement;
-    badge: HTMLElement;
-    dir: number;
-  }[]>([]);
 
   useEffect(() => {
-    const triggers: ScrollTrigger[] = [];
-    const tweens: gsap.core.Tween[] = [];
-
     const root = rootRef.current;
     if (!root) return;
 
-    // Header reveal
-    if (headRefs.current.length) {
-      gsap.set(headRefs.current, { autoAlpha: 0, y: 22 });
-      const t = gsap.to(headRefs.current, {
-        autoAlpha: 1,
-        y: 0,
+    const ctx = gsap.context(() => {
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+      // Header reveal
+      gsap.from("[data-pc-head]", {
+        autoAlpha: 0,
+        y: 24,
         duration: 1.1,
         ease: "power2.out",
         stagger: 0.12,
@@ -80,84 +68,93 @@ export default function ProcesoClaro() {
           toggleActions: "play none none reverse",
         },
       });
-      tweens.push(t);
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
-    }
 
-    // Steps reveal
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    stepRefs.current.forEach(({ step, content, image, badge, dir }) => {
-      const xContent = isDesktop ? dir : 0;
-      const xImage = isDesktop ? -dir : 0;
+      // Step reveal — each step animates as it enters viewport
+      gsap.utils.toArray<HTMLElement>("[data-pc-step]").forEach((step) => {
+        const dir = step.dataset.dir === "right" ? 80 : -80;
+        const content = step.querySelector("[data-pc-content]");
+        const image = step.querySelector("[data-pc-image]");
+        const badge = step.querySelector("[data-pc-badge]");
+        if (!content || !image || !badge) return;
 
-      gsap.set(content, { autoAlpha: 0, y: 40, x: xContent });
-      gsap.set(image, { autoAlpha: 0, y: 40, x: xImage });
-      gsap.set(badge, { autoAlpha: 0, scale: 0.5 });
+        const xContent = isDesktop ? dir : 0;
+        const xImage = isDesktop ? -dir : 0;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: step,
-          start: "top 90%",
-          toggleActions: "play none none reverse",
-        },
-        defaults: { ease: "power2.out", duration: 1 },
+        gsap.from(badge, {
+          autoAlpha: 0,
+          scale: 0.5,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: step,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+        gsap.from(image, {
+          autoAlpha: 0,
+          y: 40,
+          x: xImage,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: step,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+        gsap.from(content, {
+          autoAlpha: 0,
+          y: 40,
+          x: xContent,
+          duration: 1,
+          delay: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: step,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
       });
-      tl.to(badge, { autoAlpha: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" }, 0)
-        .to(image, { autoAlpha: 1, x: 0, y: 0 }, 0.05)
-        .to(content, { autoAlpha: 1, x: 0, y: 0 }, 0.15);
 
-      if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
-    });
+      // Glow dot along center line (desktop)
+      if (isDesktop) {
+        const dot = root.querySelector<HTMLElement>("[data-pc-dot]");
+        const line = root.querySelector<HTMLElement>("[data-pc-line]");
+        if (dot && line) {
+          gsap.fromTo(
+            dot,
+            { y: 0 },
+            {
+              y: () => Math.max(0, line.offsetHeight - dot.offsetHeight),
+              ease: "none",
+              scrollTrigger: {
+                trigger: line,
+                start: "top center",
+                end: "bottom center",
+                scrub: 1,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        }
+      }
+    }, rootRef);
 
-    // Glow dot follows scroll along center line (desktop)
-    if (dotRef.current && lineRef.current && isDesktop) {
-      const dot = dotRef.current;
-      const line = lineRef.current;
-      const t = gsap.to(dot, {
-        y: () => Math.max(0, line.offsetHeight - dot.offsetHeight),
-        ease: "none",
-        scrollTrigger: {
-          trigger: line,
-          start: "top 60%",
-          end: "bottom 60%",
-          scrub: 0.8,
-          invalidateOnRefresh: true,
-        },
-      });
-      tweens.push(t);
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
-    }
-
-    // Force refresh after layout settles (images load)
+    // Force refresh after layout settles (images, pin spacers from sections above)
     const refresh = () => ScrollTrigger.refresh();
-    const t1 = window.setTimeout(refresh, 200);
-    const t2 = window.setTimeout(refresh, 800);
+    const t1 = window.setTimeout(refresh, 250);
+    const t2 = window.setTimeout(refresh, 1000);
     window.addEventListener("load", refresh);
 
     return () => {
       window.removeEventListener("load", refresh);
       window.clearTimeout(t1);
       window.clearTimeout(t2);
-      triggers.forEach((tr) => tr.kill());
-      tweens.forEach((tw) => tw.kill());
+      ctx.revert();
     };
   }, []);
-
-  const setHeadRef = (i: number) => (el: HTMLElement | null) => {
-    if (el) headRefs.current[i] = el;
-  };
-
-  const setStepRef =
-    (i: number, dir: number) =>
-    (el: HTMLDivElement | null) => {
-      if (!el) return;
-      const content = el.querySelector<HTMLElement>("[data-pc-content]");
-      const image = el.querySelector<HTMLElement>("[data-pc-image]");
-      const badge = el.querySelector<HTMLElement>("[data-pc-badge]");
-      if (content && image && badge) {
-        stepRefs.current[i] = { step: el, content, image, badge, dir };
-      }
-    };
 
   return (
     <section
@@ -183,7 +180,7 @@ export default function ProcesoClaro() {
         {/* Header */}
         <div className="text-center px-5 md:px-8 max-w-4xl mx-auto">
           <h2
-            ref={setHeadRef(0)}
+            data-pc-head=""
             className="font-heading uppercase"
             style={{
               ...gradientText,
@@ -195,7 +192,7 @@ export default function ProcesoClaro() {
             Un proceso claro para construir sin incertidumbre
           </h2>
           <p
-            ref={setHeadRef(1)}
+            data-pc-head=""
             className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-white/75"
           >
             Definimos alcance, diseñamos arquitectura y entregamos con pruebas y
@@ -207,7 +204,7 @@ export default function ProcesoClaro() {
         <div className="relative mt-14 sm:mt-20 md:mt-24 mx-auto max-w-6xl px-5 md:px-8">
           {/* Center line + dot (desktop only) */}
           <div
-            ref={lineRef}
+            data-pc-line=""
             aria-hidden="true"
             className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px"
             style={{
@@ -216,7 +213,7 @@ export default function ProcesoClaro() {
             }}
           />
           <div
-            ref={dotRef}
+            data-pc-dot=""
             aria-hidden="true"
             className="hidden md:block absolute left-1/2 top-0 w-3 h-3 rounded-full"
             style={{
@@ -230,11 +227,11 @@ export default function ProcesoClaro() {
           <div className="space-y-14 sm:space-y-20 md:space-y-28">
             {STEPS.map((s, i) => {
               const textRight = i % 2 === 1;
-              const dir = textRight ? 80 : -80;
               return (
                 <div
                   key={s.num}
-                  ref={setStepRef(i, dir)}
+                  data-pc-step=""
+                  data-dir={textRight ? "right" : "left"}
                   className="grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-20 items-center"
                 >
                   {/* Content (badge + title + desc) */}
