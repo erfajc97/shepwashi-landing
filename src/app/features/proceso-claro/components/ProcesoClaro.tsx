@@ -15,7 +15,7 @@ export default function ProcesoClaro() {
   return (
     <section
       ref={rootRef}
-      className="relative w-full overflow-hidden bg-black py-20 sm:py-24 md:py-28"
+      className="relative w-full overflow-hidden bg-black py-20 sm:py-24 md:py-28 isolate"
       aria-label="Un proceso claro"
     >
       <img
