@@ -4,7 +4,7 @@ export function HeroAura() {
       <div
         data-anim="circle"
         aria-hidden="true"
-        className="pointer-events-none absolute rounded-full -z-[8]"
+        className="pointer-events-none absolute rounded-full z-[-8]"
         style={{
           background: "linear-gradient(180deg, #D9D9D9 0%, #737373 100%)",
           mixBlendMode: "luminosity",
@@ -17,7 +17,7 @@ export function HeroAura() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute rounded-full -z-[8]"
+        className="pointer-events-none absolute rounded-full z-[-8]"
         style={{
           top: "15%",
           right: "-12%",
@@ -30,7 +30,7 @@ export function HeroAura() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-black/70 to-transparent -z-[7]"
+        className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-black/70 to-transparent z-[-7]"
       />
     </>
   );

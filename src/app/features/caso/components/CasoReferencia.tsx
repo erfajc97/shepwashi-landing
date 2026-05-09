@@ -1,11 +1,8 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gradientTextHorizontal } from "@/app/shared/styles/textGradients";
+import { useRef } from "react";
 import { useFadeUpOnScroll } from "@/app/shared/animations/useFadeUpOnScroll";
-import { SCRUB_MEDIUM } from "@/app/shared/animations/animationDefaults";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useCasoBgZoom } from "../hooks/useCasoBgZoom";
+import { CasoReferenciaBackground } from "./CasoReferenciaBackground";
+import { CasoReferenciaContent } from "./CasoReferenciaContent";
 
 export default function CasoReferencia() {
   const rootRef = useRef<HTMLElement>(null);
@@ -18,26 +15,7 @@ export default function CasoReferencia() {
     stagger: 0.14,
     start: "top 80%",
   });
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        "[data-caso-bg]",
-        { scale: 1.12 },
-        {
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: SCRUB_MEDIUM,
-          },
-        }
-      );
-    }, rootRef);
-    return () => ctx.revert();
-  }, []);
+  useCasoBgZoom({ rootRef });
 
   return (
     <section
@@ -45,81 +23,8 @@ export default function CasoReferencia() {
       className="relative w-full h-svh overflow-hidden bg-black isolate"
       aria-label="Caso referencia — Modulo Ventas al Piso"
     >
-      <img
-        data-caso-bg
-        src="/images/bg-evento-luntriqa.png"
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover will-change-transform"
-        style={{ objectPosition: "center top" }}
-        draggable={false}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{ backgroundColor: "rgba(0,0,0,0.35)" }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-32 sm:h-40 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.65) 100%)",
-        }}
-      />
-
-      <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 text-center">
-        <div
-          data-caso-anim
-          className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
-        >
-          <img
-            src="/images/ShepwashiOfficialLogobig.png"
-            alt="Shepwashi"
-            loading="lazy"
-            decoding="async"
-            className="h-7 sm:h-8 md:h-9 w-auto object-contain select-none"
-            draggable={false}
-          />
-          <span
-            aria-hidden="true"
-            className="block w-px h-6 sm:h-7 md:h-8 bg-white/35"
-          />
-          <span
-            className="font-semibold text-sm sm:text-base md:text-lg"
-            style={gradientTextHorizontal}
-          >
-            Conozca nuestro caso referencia
-          </span>
-        </div>
-
-        <h2
-          data-caso-anim
-          className="font-heading uppercase max-w-5xl"
-          style={{
-            ...gradientTextHorizontal,
-            fontSize: "clamp(2rem, 6.5vw, 5.5rem)",
-            letterSpacing: "0.02em",
-            lineHeight: 1.05,
-          }}
-        >
-          Modulo &quot;Ventas al piso&quot; (Fintech)
-        </h2>
-
-        <p
-          data-caso-anim
-          className="mt-6 md:mt-8 max-w-3xl italic font-medium leading-relaxed"
-          style={{
-            ...gradientTextHorizontal,
-            fontSize: "clamp(0.95rem, 1.6vw, 1.25rem)",
-          }}
-        >
-          Ejemplo de solución con control operativo, trazabilidad y accesos por
-          roles, construida para entornos exigentes.
-        </p>
-      </div>
+      <CasoReferenciaBackground />
+      <CasoReferenciaContent />
     </section>
   );
 }

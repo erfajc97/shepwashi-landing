@@ -6,7 +6,7 @@ export function HeroButterfly() {
       alt=""
       aria-hidden="true"
       decoding="async"
-      className="pointer-events-none absolute select-none -z-[7]"
+      className="pointer-events-none absolute select-none z-[-7]"
       style={{
         left: "50%",
         top: "40%",
