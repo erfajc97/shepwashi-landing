@@ -41,8 +41,8 @@ export const PROCESO_FINAL = {
 };
 
 export const PROCESO_THUMBS = [
-  "/images/enfoque-1.png",
-  "/images/enfoque-4.png",
-  "/images/enfoque-2.png",
-  "/images/enfoque-3.png",
+  "/images/enfoque-1.webp",
+  "/images/enfoque-4.webp",
+  "/images/enfoque-2.webp",
+  "/images/enfoque-3.webp",
 ];

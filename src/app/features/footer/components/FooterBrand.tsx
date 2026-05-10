@@ -2,7 +2,7 @@ export function FooterBrand() {
   return (
     <div className="flex flex-col gap-3">
       <img
-        src="/images/ShepwashiOfficialLogobig.png"
+        src="/images/ShepwashiOfficialLogobig.webp"
         alt="Shepwashi"
         decoding="async"
         className="object-contain"

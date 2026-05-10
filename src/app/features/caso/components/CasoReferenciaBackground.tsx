@@ -3,7 +3,7 @@ export function CasoReferenciaBackground() {
     <>
       <img
         data-caso-bg
-        src="/images/bg-evento-luntriqa.png"
+        src="/images/bg-evento-luntriqa.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"

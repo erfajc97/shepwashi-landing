@@ -9,7 +9,7 @@ export function CasoReferenciaContent() {
         className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
       >
         <img
-          src="/images/ShepwashiOfficialLogobig.png"
+          src="/images/ShepwashiOfficialLogobig.webp"
           alt="Shepwashi"
           loading="lazy"
           decoding="async"

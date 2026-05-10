@@ -16,7 +16,7 @@ export const SERVICIOS: Servicio[] = [
     title: "UX/UI",
     label: "UI UX",
     labelPos: "bottom-left",
-    image: "/images/ux.png",
+    image: "/images/ux.webp",
     bullets: [
       "Investigación y validación rápida",
       "Prototipos y diseño de interfaz",
@@ -30,7 +30,7 @@ export const SERVICIOS: Servicio[] = [
     title: "Marketing",
     label: "MARKETING",
     labelPos: "top-center",
-    image: "/images/marketing.png",
+    image: "/images/marketing.webp",
     bullets: [
       "Propuesta de valor y mensaje",
       "Landing pages orientadas a conversión",
@@ -44,7 +44,7 @@ export const SERVICIOS: Servicio[] = [
     title: "Email MKT",
     label: "EMAIL MKT",
     labelPos: "bottom-right",
-    image: "/images/email-mk.png",
+    image: "/images/email-mk.webp",
     bullets: [
       "Automatizaciones (bienvenida, retención, reactivación)",
       "Segmentación y campañas",

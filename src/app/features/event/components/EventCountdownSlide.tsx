@@ -21,7 +21,7 @@ export const EventCountdownSlide = forwardRef<HTMLDivElement, Props>(
       >
         <img
           ref={bgRef}
-          src="/images/bg-event-desktop.png"
+          src="/images/bg-event-desktop.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -34,7 +34,7 @@ export const EventCountdownSlide = forwardRef<HTMLDivElement, Props>(
         <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-5 md:px-8 text-center">
           <img
             data-anim
-            src="/images/luntriqa.png"
+            src="/images/luntriqa.webp"
             alt="Luntriqa"
             decoding="async"
             className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto object-contain select-none"
@@ -66,7 +66,7 @@ export const EventCountdownSlide = forwardRef<HTMLDivElement, Props>(
               Patrocinado x
             </span>
             <img
-              src="/images/ShepwashiOfficialLogobig.png"
+              src="/images/ShepwashiOfficialLogobig.webp"
               alt="Shepwashi"
               decoding="async"
               className="h-7 sm:h-8 md:h-9 w-auto object-contain select-none"

@@ -49,7 +49,7 @@ export const EventConectaSlide = forwardRef<HTMLDivElement, Props>(
       >
         <img
           ref={bgRef}
-          src="/images/bg-evento-luntriqa.png"
+          src="/images/bg-evento-luntriqa.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -62,7 +62,7 @@ export const EventConectaSlide = forwardRef<HTMLDivElement, Props>(
         <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-5 md:px-8 text-center">
           <img
             data-anim
-            src="/images/luntriqa.png"
+            src="/images/luntriqa.webp"
             alt="Luntriqa"
             decoding="async"
             className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto object-contain select-none"

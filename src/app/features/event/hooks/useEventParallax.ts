@@ -43,6 +43,9 @@ export function useEventParallax({
         .to(bg1Ref.current, { scale: 1, duration: 1.8, ease: "power2.out" }, 0)
         .to(s1Items, { autoAlpha: 1, y: 0, stagger: 0.07 }, 0.1);
 
+      const isTouch =
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
       const swap = gsap.timeline({
         scrollTrigger: {
           trigger: root,
@@ -52,6 +55,14 @@ export function useEventParallax({
           fastScrollEnd: true,
           preventOverlaps: true,
           invalidateOnRefresh: true,
+          snap: isTouch
+            ? {
+                snapTo: [0, 1],
+                duration: { min: 0.2, max: 0.5 },
+                ease: "power2.inOut",
+                inertia: false,
+              }
+            : undefined,
         },
       });
 

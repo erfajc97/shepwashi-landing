@@ -7,7 +7,7 @@ export function HeroLogo() {
         style={{ maxWidth: 820 }}
       >
         <img
-          src="/images/ShepwashiOfficialLogobig.png"
+          src="/images/ShepwashiOfficialLogobig.webp"
           alt="Shepwashi"
           decoding="async"
           className="block w-full h-auto object-contain select-none pointer-events-none"

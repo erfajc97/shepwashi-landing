@@ -17,7 +17,7 @@ export default function Footer() {
       aria-label="Pie de página"
     >
       <img
-        src="/images/bg-desktop.png"
+        src="/images/bg-desktop.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"
@@ -51,7 +51,7 @@ export default function Footer() {
         className="relative z-10 mt-6 flex justify-center pointer-events-none select-none"
       >
         <img
-          src="/images/ShepwashiOfficialLogobig.png"
+          src="/images/ShepwashiOfficialLogobig.webp"
           alt=""
           aria-hidden="true"
           decoding="async"

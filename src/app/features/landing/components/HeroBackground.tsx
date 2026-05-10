@@ -1,9 +1,9 @@
 export function HeroBackground() {
   return (
     <picture aria-hidden="true">
-      <source srcSet="/images/bg-desktop.png" media="(min-width: 768px)" />
+      <source srcSet="/images/bg-desktop.webp" media="(min-width: 768px)" />
       <img
-        src="/images/bg-primary.png"
+        src="/images/bg-primary.webp"
         alt=""
         fetchPriority="high"
         decoding="async"

@@ -2,7 +2,7 @@ export function ProcesoStackBackground() {
   return (
     <>
       <img
-        src="/images/bg-desktop.png"
+        src="/images/bg-desktop.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"

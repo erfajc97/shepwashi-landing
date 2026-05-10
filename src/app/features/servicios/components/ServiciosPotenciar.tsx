@@ -18,7 +18,7 @@ export default function ServiciosPotenciar() {
       aria-label="Servicios para potenciar"
     >
       <img
-        src="/images/bg-desktop.png"
+        src="/images/bg-desktop.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"

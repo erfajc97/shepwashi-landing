@@ -41,6 +41,9 @@ export function useStackedSlidesPin({
         });
       });
 
+      const isTouch =
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: root,
@@ -53,6 +56,14 @@ export function useStackedSlidesPin({
           invalidateOnRefresh: true,
           fastScrollEnd: true,
           preventOverlaps: true,
+          snap: isTouch
+            ? {
+                snapTo: 1 / transitions,
+                duration: { min: 0.2, max: 0.55 },
+                ease: "power2.inOut",
+                inertia: false,
+              }
+            : undefined,
         },
         defaults: { ease: "power2.inOut" },
       });

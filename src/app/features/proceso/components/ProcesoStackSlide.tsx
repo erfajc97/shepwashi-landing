@@ -11,7 +11,7 @@ export function ProcesoStackSlide({ slide }: Props) {
     <div className="relative h-full w-full flex items-center px-5 sm:px-10 md:pl-32 lg:pl-40 md:pr-12">
       {slide.showLuntriqa && (
         <img
-          src="/images/luntriqa.png"
+          src="/images/luntriqa.webp"
           alt="Luntriqa"
           loading="lazy"
           decoding="async"

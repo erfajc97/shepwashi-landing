@@ -18,7 +18,7 @@ export default function ContactoFaq() {
       aria-label="Preguntas frecuentes y contacto"
     >
       <img
-        src="/images/bg-desktop.png"
+        src="/images/bg-desktop.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"
@@ -33,7 +33,7 @@ export default function ContactoFaq() {
       />
 
       <img
-        src="/images/butterfly.png"
+        src="/images/butterfly.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"

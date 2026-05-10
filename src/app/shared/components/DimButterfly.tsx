@@ -19,7 +19,7 @@ export function DimButterfly({
   return (
     <img
       {...dataProps}
-      src="/images/butterfly.png"
+      src="/images/butterfly.webp"
       alt=""
       aria-hidden="true"
       loading="lazy"

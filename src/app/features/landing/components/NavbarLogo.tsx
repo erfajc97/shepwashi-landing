@@ -3,7 +3,7 @@ export function NavbarLogo() {
     <a href="/" className="flex items-center gap-2 shrink-0 min-w-0">
       <span className="block h-9 sm:h-11 md:h-14 px-1 sm:px-2 py-1 sm:py-2">
         <img
-          src="/images/ShepwashiOfficialLogobig.png"
+          src="/images/ShepwashiOfficialLogobig.webp"
           alt="Shepwashi"
           decoding="async"
           fetchPriority="high"

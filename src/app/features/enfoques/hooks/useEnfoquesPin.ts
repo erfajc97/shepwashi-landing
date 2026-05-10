@@ -39,6 +39,9 @@ export function useEnfoquesPin({ rootRef, stageRef }: Options) {
       gsap.set(cards[0], { autoAlpha: 1, xPercent: 0, scale: 1 });
 
       const transitions = cards.length - 1;
+      const isTouch =
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root,
@@ -51,6 +54,14 @@ export function useEnfoquesPin({ rootRef, stageRef }: Options) {
           invalidateOnRefresh: true,
           fastScrollEnd: true,
           preventOverlaps: true,
+          snap: isTouch
+            ? {
+                snapTo: 1 / transitions,
+                duration: { min: 0.2, max: 0.55 },
+                ease: "power2.inOut",
+                inertia: false,
+              }
+            : undefined,
         },
         defaults: { ease: "none" },
       });

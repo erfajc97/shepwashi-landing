@@ -11,7 +11,7 @@ export const ENFOQUES: Enfoque[] = [
   {
     num: "01",
     tag: "IA Aplicada",
-    image: "/images/enfoque-1.png",
+    image: "/images/enfoque-1.webp",
     title: "Automatiza procesos y mejora decisiones con módulos inteligentes",
     bullets: [
       "Automatización de flujos (reglas + IA)",
@@ -22,7 +22,7 @@ export const ENFOQUES: Enfoque[] = [
   {
     num: "02",
     tag: "Ciberseguridad",
-    image: "/images/enfoque-2.png",
+    image: "/images/enfoque-2.webp",
     title: "Evaluamos tus protocolos y dejamos un plan de mejora accionable",
     bullets: [
       "Revisión de accesos, permisos y datos",
@@ -33,7 +33,7 @@ export const ENFOQUES: Enfoque[] = [
   {
     num: "03",
     tag: "Fintech",
-    image: "/images/enfoque-3.png",
+    image: "/images/enfoque-3.webp",
     title:
       "Plataformas con estándares de seguridad y requisitos corporativos",
     bullets: [
@@ -45,7 +45,7 @@ export const ENFOQUES: Enfoque[] = [
   {
     num: "04",
     tag: "Desarrollo a la Medida",
-    image: "/images/enfoque-4.png",
+    image: "/images/enfoque-4.webp",
     title: "Sistemas a medida, integraciones y arquitectura escalable",
     bullets: [
       "Back-end, front-end y APIs",

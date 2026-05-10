@@ -8,7 +8,7 @@ export function EnfoquesHeader() {
     >
       <div className="flex items-center justify-center mb-1">
         <img
-          src="/images/ShepwashiOfficialLogobig.png"
+          src="/images/ShepwashiOfficialLogobig.webp"
           alt="Shepwashi"
           decoding="async"
           className="h-5 sm:h-6 md:h-7 w-auto object-contain opacity-90"

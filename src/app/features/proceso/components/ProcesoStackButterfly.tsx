@@ -2,7 +2,7 @@ export function ProcesoStackButterfly() {
   return (
     <img
       data-stack-butterfly
-      src="/images/butterfly.png"
+      src="/images/butterfly.webp"
       alt=""
       aria-hidden="true"
       loading="lazy"

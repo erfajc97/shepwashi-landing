@@ -2,7 +2,7 @@ export function HeroButterfly() {
   return (
     <img
       data-anim="butterfly"
-      src="/images/butterfly.png"
+      src="/images/butterfly.webp"
       alt=""
       aria-hidden="true"
       decoding="async"

@@ -4,7 +4,7 @@ export function FooterBlogCard() {
   return (
     <div data-footer-reveal className="relative w-full max-w-4xl mx-auto">
       <img
-        src="/images/blog.png"
+        src="/images/blog.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"

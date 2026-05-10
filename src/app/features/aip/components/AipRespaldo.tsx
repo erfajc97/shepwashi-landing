@@ -14,7 +14,7 @@ export default function AipRespaldo() {
       aria-label="Respaldo AIP"
     >
       <img
-        src="/images/bg-desktop.png"
+        src="/images/bg-desktop.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"
@@ -29,7 +29,7 @@ export default function AipRespaldo() {
       />
 
       <img
-        src="/images/globo.png"
+        src="/images/globo.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"
@@ -79,7 +79,7 @@ export default function AipRespaldo() {
 
         <img
           data-aip-reveal
-          src="/images/people.png"
+          src="/images/people.webp"
           alt="Equipo Alianza Insurtech Panamericana"
           loading="lazy"
           decoding="async"
