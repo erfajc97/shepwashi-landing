@@ -1,0 +1,52 @@
+---
+import { SUMMIT } from "@/data/site";
+---
+<section id="summit" class="section-pad relative" style="background: var(--navy);">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+      <div class="fade-up">
+        <p class="eyebrow" style="margin-bottom: 20px;">{SUMMIT.eyebrow}</p>
+        <h2 style="font-family: var(--font-display); font-weight: 300; font-size: clamp(44px, 6vw, 80px); line-height: 1; color: var(--white); letter-spacing: -1.5px;">
+          {SUMMIT.title}
+        </h2>
+        <div class="divider-v" style="margin: 28px 0; height: 48px;"></div>
+        <p class="body-copy" style="max-width: 420px;">{SUMMIT.copy}</p>
+
+        <div style="margin-top: 36px;">
+          <a href="#contacto" class="btn-primary">{SUMMIT.cta}</a>
+          <p class="microcopy" style="margin-top: 16px;">{SUMMIT.note}</p>
+        </div>
+      </div>
+
+      <div class="fade-up summit-ficha" data-d="2">
+        {SUMMIT.ficha.map((f, i, arr) => (
+          <div class="summit-row" style={i < arr.length - 1 ? "border-bottom: 0.5px solid var(--border);" : ""}>
+            <span class="summit-k">{f.k}</span>
+            <span class="summit-v">{f.v}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .summit-ficha { border: 0.5px solid var(--border); }
+  .summit-row { padding: 22px 28px; display: flex; flex-direction: column; gap: 8px; transition: background 0.4s ease; }
+  .summit-row:hover { background: rgba(201, 168, 76, 0.04); }
+  .summit-k {
+    font-family: var(--font-sans);
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .summit-v {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--white);
+  }
+</style>

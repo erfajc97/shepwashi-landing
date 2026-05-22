@@ -1,34 +1,27 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import IntroVideo from "@/app/features/intro/components/IntroVideo";
-import SmoothScroll from "@/app/shared/components/SmoothScroll";
-import Navbar from "@/app/features/landing/components/Navbar";
-import Hero from "@/app/features/landing/components/Hero";
-import EventParallax from "@/app/features/event/components/EventParallax";
-import CuatroEnfoques from "@/app/features/enfoques/components/CuatroEnfoques";
-import CasoReferencia from "@/app/features/caso/components/CasoReferencia";
-import ProcesoStack from "@/app/features/proceso/components/ProcesoStack";
-import ProcesoClaro from "@/app/features/proceso-claro/components/ProcesoClaro";
-import ServiciosPotenciar from "@/app/features/servicios/components/ServiciosPotenciar";
-import AipRespaldo from "@/app/features/aip/components/AipRespaldo";
-import ContactoFaq from "@/app/features/contacto/components/ContactoFaq";
-import Footer from "@/app/features/footer/components/Footer";
+import Navbar from "@/components/Navbar.astro";
+import Hero from "@/components/Hero.astro";
+import Servicios from "@/components/Servicios.astro";
+import Marcas from "@/components/Marcas.astro";
+import Summit from "@/components/Summit.astro";
+import Proyectos from "@/components/Proyectos.astro";
+import Clientes from "@/components/Clientes.astro";
+import ComoTrabajamos from "@/components/ComoTrabajamos.astro";
+import Contacto from "@/components/Contacto.astro";
+import Footer from "@/components/Footer.astro";
 ---
-
-<BaseLayout title="Shepwashi — Plataformas seguras con IA">
-  <SmoothScroll client:idle />
-  <IntroVideo client:load />
-  <Navbar client:load />
+<BaseLayout>
+  <Navbar />
   <main>
-    <Hero client:load />
-    <EventParallax client:visible />
-    <CuatroEnfoques client:visible />
-    <CasoReferencia client:visible />
-    <ProcesoStack client:visible />
-    <ProcesoClaro client:visible />
-    <ServiciosPotenciar client:visible />
-    <AipRespaldo client:visible />
-    <ContactoFaq client:visible />
+    <Hero />
+    <Servicios />
+    <Marcas />
+    <Summit />
+    <Proyectos />
+    <Clientes />
+    <ComoTrabajamos />
+    <Contacto />
   </main>
-  <Footer client:visible />
+  <Footer />
 </BaseLayout>

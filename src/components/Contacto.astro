@@ -1,0 +1,79 @@
+---
+import { CONTACTO, FORM_ENDPOINT } from "@/data/site";
+---
+<section id="contacto" class="section-pad relative" style="background: var(--navy2);">
+  <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
+    <p class="eyebrow fade-up" style="margin-bottom: 20px;">{CONTACTO.eyebrow}</p>
+
+    <h2 class="fade-up" data-d="1" style="font-family: var(--font-display); font-weight: 300; font-size: clamp(32px, 4.5vw, 58px); line-height: 1.1; color: var(--white); letter-spacing: -1px; max-width: 16ch;">
+      {CONTACTO.title}
+    </h2>
+
+    <p class="body-copy fade-up" data-d="2" style="max-width: 480px; margin-top: 20px; margin-bottom: 40px;">
+      {CONTACTO.body}
+    </p>
+
+    <form
+      class="form-wrap fade-up w-full"
+      data-d="3"
+      id="sw-form"
+      style="max-width: 560px;"
+      action={FORM_ENDPOINT || "#"}
+      method="POST"
+      novalidate
+    >
+      <div class="form-row">
+        <input type="text" name="nombre"  placeholder="Nombre"  required autocomplete="name" />
+        <input type="text" name="empresa" placeholder="Empresa" required autocomplete="organization" />
+      </div>
+      <input type="email" name="email" placeholder="Correo electrónico" required autocomplete="email" />
+      <textarea name="mensaje" placeholder="¿Qué quieres resolver?" required></textarea>
+      <button type="submit" class="form-submit" id="sw-submit">Agendar conversación</button>
+    </form>
+
+    <div class="fade-up flex flex-wrap items-center justify-center gap-4" data-d="4" style="margin-top: 24px;">
+      <a href="#proyectos" class="btn-ghost">{CONTACTO.ctaSecondary}</a>
+    </div>
+
+    <p class="microcopy fade-up" data-d="4" style="margin-top: 22px;">{CONTACTO.note}</p>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById("sw-form");
+    const btn  = document.getElementById("sw-submit");
+    if (!form || !btn) return;
+    const endpoint = form.getAttribute("action");
+    const hasEndpoint = endpoint && endpoint !== "#";
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      if (btn.disabled) return;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      if (hasEndpoint) {
+        btn.disabled = true;
+        btn.textContent = "Enviando…";
+        try {
+          const res = await fetch(endpoint, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+          if (!res.ok) throw new Error("bad response");
+          btn.textContent = "Solicitud enviada ✓";
+          form.reset();
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = "Error — reintentar";
+        }
+      } else {
+        // modo demo: sin endpoint configurado
+        btn.textContent = "Solicitud enviada ✓";
+        btn.disabled = true;
+      }
+      btn.style.opacity = "0.6";
+    });
+  })();
+</script>

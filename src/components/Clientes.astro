@@ -1,0 +1,110 @@
+---
+import { CLIENTES } from "@/data/site";
+---
+<section id="clientes" class="section-pad relative" style="background: var(--navy3);">
+  <div class="max-w-5xl mx-auto text-center flex flex-col items-center">
+    <p class="eyebrow fade-up" style="margin-bottom: 20px;">{CLIENTES.eyebrow}</p>
+    <h2 class="h-section fade-up" data-d="1" style="max-width: 620px;">{CLIENTES.title}</h2>
+    <p class="body-copy fade-up" data-d="2" style="max-width: 500px; margin-top: 18px;">
+      {CLIENTES.body}
+    </p>
+
+    {/* NOTA DEV: cuando haya logos/testimonios reales, reemplazar este bloque. */}
+    <div class="clientes-grid fade-up" data-d="3">
+      {CLIENTES.sectores.map((s) => (
+        <div class="cliente-card">
+          <span class="cliente-icon" aria-hidden="true">
+            {s.icon === "shield" && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7.5 3v5c0 5-3.2 8.6-7.5 10C7.7 19.6 4.5 16 4.5 11V6L12 3z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            )}
+            {s.icon === "grid" && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3.5" y="3.5" width="7" height="7" rx="1"/>
+                <rect x="13.5" y="3.5" width="7" height="7" rx="1"/>
+                <rect x="3.5" y="13.5" width="7" height="7" rx="1"/>
+                <rect x="13.5" y="13.5" width="7" height="7" rx="1"/>
+              </svg>
+            )}
+            {s.icon === "spark" && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            )}
+          </span>
+          <h3 class="cliente-title">{s.title}</h3>
+          <p class="cliente-body">{s.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 0.5px solid var(--border);
+    margin-top: 48px;
+    width: 100%;
+    max-width: 880px;
+  }
+  @media (max-width: 760px) { .clientes-grid { grid-template-columns: 1fr; } }
+
+  .cliente-card {
+    padding: 40px 32px;
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: background 0.5s ease;
+  }
+  .cliente-card:last-child { border-right: none; }
+  .cliente-card:hover { background: rgba(201, 168, 76, 0.045); }
+  @media (max-width: 760px) {
+    .cliente-card {
+      border-right: none;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .cliente-card:last-child { border-bottom: none; }
+  }
+
+  .cliente-icon {
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid var(--border);
+    color: var(--gold);
+    margin-bottom: 22px;
+    transition: border-color 0.5s ease, color 0.5s ease;
+  }
+  .cliente-card:hover .cliente-icon {
+    border-color: rgba(201, 168, 76, 0.55);
+    color: var(--gold2);
+  }
+
+  .cliente-title {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 12px 0;
+  }
+  .cliente-body {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--muted);
+    margin: 0;
+    max-width: 220px;
+  }
+</style>

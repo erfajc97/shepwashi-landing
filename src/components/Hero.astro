@@ -1,0 +1,196 @@
+---
+import { HERO } from "@/data/site";
+---
+<section id="top" class="hero-section relative overflow-hidden">
+  <canvas id="sw-particles" aria-hidden="true"></canvas>
+
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto">
+    <p class="eyebrow fade-up" style="margin-bottom: 30px;">{HERO.eyebrow}</p>
+
+    <h1 class="h-display fade-up" data-d="1" style="max-width: 16ch;">
+      {HERO.headline}
+    </h1>
+
+    <p class="body-copy fade-up" data-d="2" style="max-width: 560px; margin-top: 28px; font-size: 14px; color: rgba(245,240,232,0.82);">
+      {HERO.subhead}
+    </p>
+
+    <div class="fade-up flex flex-wrap items-center justify-center gap-4" data-d="3" style="margin-top: 40px;">
+      <a href="#contacto" class="btn-primary">{HERO.ctaPrimary}</a>
+      <a href="#marcas" class="btn-ghost">{HERO.ctaSecondary}</a>
+    </div>
+
+    <div class="hero-metrics fade-up" data-d="4">
+      {HERO.metrics.map((m, i) => (
+        <>
+          {i > 0 && <span class="hero-metric-sep" aria-hidden="true"></span>}
+          <div class="hero-metric">
+            <span class="hero-metric-icon" aria-hidden="true">
+              {m.icon === "award" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="9" r="6"/>
+                  <path d="M8.5 14l-2 7 5.5-3 5.5 3-2-7"/>
+                </svg>
+              )}
+              {m.icon === "layers" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l9 5-9 5-9-5 9-5z"/>
+                  <path d="M3 13l9 5 9-5"/>
+                </svg>
+              )}
+              {m.icon === "globe" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/>
+                </svg>
+              )}
+            </span>
+            <span class="hero-metric-value">{m.value}</span>
+            <span class="hero-metric-label">{m.label}</span>
+          </div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 104px 24px 72px;
+  }
+  @media (max-width: 768px) {
+    .hero-section { padding: 96px 22px 60px; min-height: 100svh; }
+  }
+
+  #sw-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.12), transparent 58%),
+      radial-gradient(ellipse at 50% 115%, rgba(5,14,26,0.7), transparent 60%);
+  }
+
+  .hero-metrics {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    margin-top: 60px;
+    border: 0.5px solid var(--border);
+  }
+  .hero-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 24px 36px;
+    min-width: 160px;
+  }
+  @media (max-width: 600px) {
+    .hero-metrics { flex-direction: column; }
+    .hero-metric { padding: 22px 28px; min-width: 200px; }
+  }
+  .hero-metric-sep {
+    width: 0.5px;
+    background: var(--border);
+    align-self: stretch;
+  }
+  @media (max-width: 600px) {
+    .hero-metric-sep { width: auto; height: 0.5px; }
+  }
+  .hero-metric-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid var(--border);
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .hero-metric-value {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 3.4vw, 42px);
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: -1px;
+  }
+  .hero-metric-label {
+    font-family: var(--font-sans);
+    font-size: 8.5px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const canvas = document.getElementById("sw-particles");
+    if (!canvas) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let W = 0, H = 0, pts = [], dpr = Math.min(window.devicePixelRatio || 1, 2), raf = 0;
+
+    function init() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      W = rect.width; H = rect.height;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + "px"; canvas.style.height = H + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.min(80, Math.floor((W * H) / 17000));
+      pts = [];
+      for (let i = 0; i < count; i++) {
+        pts.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: Math.random() * 1.1 + 0.25,
+          o: Math.random() * 0.32 + 0.06,
+          speed: Math.random() * 0.11 + 0.03,
+          dir: Math.random() > 0.5 ? 1 : -1,
+        });
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      for (const p of pts) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(226, 196, 122, " + p.o.toFixed(3) + ")";
+        ctx.fill();
+        p.y -= p.speed;
+        p.o += 0.0016 * p.dir;
+        if (p.o > 0.42 || p.o < 0.05) p.dir *= -1;
+        if (p.y < -4) { p.y = H + 4; p.x = Math.random() * W; }
+      }
+      raf = requestAnimationFrame(draw);
+    }
+    function start() { init(); cancelAnimationFrame(raf); draw(); }
+    start();
+    let to;
+    window.addEventListener("resize", () => { clearTimeout(to); to = setTimeout(start, 150); });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) cancelAnimationFrame(raf); else draw();
+    });
+  })();
+</script>

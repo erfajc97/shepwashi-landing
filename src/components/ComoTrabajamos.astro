@@ -1,0 +1,61 @@
+---
+import { PRINCIPIOS } from "@/data/site";
+---
+<section id="proceso" class="section-pad relative" style="background: var(--navy);">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+      <div class="fade-up lg:sticky" style="top: 110px;">
+        <p class="eyebrow" style="margin-bottom: 20px;">{PRINCIPIOS.eyebrow}</p>
+        <h2 class="h-section" style="max-width: 8ch;">{PRINCIPIOS.title}</h2>
+        <p class="body-copy" style="max-width: 340px; margin-top: 22px;">
+          {PRINCIPIOS.bajada}
+        </p>
+      </div>
+
+      <div class="principios">
+        {PRINCIPIOS.items.map((p, i) => (
+          <article class="principio fade-up" data-d={String(Math.min(4, i + 1))}>
+            <span class="deco-num">{p.n}</span>
+            <div class="principio-body">
+              <h3 class="principio-title">{p.title}</h3>
+              <p class="principio-lead">{p.lead}</p>
+              <p class="card-body">{p.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .principios { display: flex; flex-direction: column; }
+  .principio {
+    display: flex;
+    gap: 26px;
+    padding: 28px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .principio:first-child { padding-top: 0; }
+  .principio:last-child { border-bottom: none; padding-bottom: 0; }
+  @media (max-width: 520px) { .principio { gap: 18px; } }
+
+  .principio-body { flex: 1; }
+  .principio-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.15;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin: 0 0 6px 0;
+  }
+  .principio-lead {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--gold);
+    margin: 0 0 12px 0;
+  }
+</style>

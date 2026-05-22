@@ -1,0 +1,84 @@
+---
+import { NAV_LINKS } from "@/data/site";
+---
+<nav class="nav-root" id="sw-nav" aria-label="Navegación principal">
+  <a href="#top" class="block" aria-label="Shepwashi — inicio">
+    <img src="/images/logo.png" alt="Shepwashi" class="nav-logo" width="180" height="30" />
+  </a>
+
+  <div class="nav-desktop items-center gap-11">
+    {NAV_LINKS.map((l) => (
+      <a href={l.href} class="nav-link">{l.label}</a>
+    ))}
+  </div>
+
+  <a href="#contacto" class="nav-cta nav-desktop">Habla con nuestro equipo</a>
+
+  <button
+    type="button"
+    class="nav-burger w-10 h-10"
+    aria-label="Abrir menú"
+    aria-expanded="false"
+    id="sw-burger"
+  >
+    <span class="block w-5 h-px bg-[var(--gold)] relative">
+      <span class="absolute -top-1.5 left-0 w-5 h-px bg-[var(--gold)]"></span>
+      <span class="absolute  top-1.5 left-0 w-5 h-px bg-[var(--gold)]"></span>
+    </span>
+  </button>
+</nav>
+
+<div class="mobile-panel" id="sw-panel" aria-hidden="true">
+  <button
+    type="button"
+    class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-[var(--gold)]"
+    id="sw-close"
+    aria-label="Cerrar menú"
+  >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+  </button>
+
+  <img src="/images/logo.png" alt="Shepwashi" style="height: 30px; width: auto; margin-bottom: 8px;" />
+
+  <ul class="flex flex-col items-center gap-7 list-none p-0 m-0">
+    {NAV_LINKS.map((l) => (
+      <li><a href={l.href} class="nav-link" data-mobile-link style="font-size: 13px; letter-spacing: 4px;">{l.label}</a></li>
+    ))}
+  </ul>
+
+  <a href="#contacto" class="nav-cta" data-mobile-link>Habla con nuestro equipo</a>
+</div>
+
+<script is:inline>
+  (function () {
+    const nav = document.getElementById("sw-nav");
+    const burger = document.getElementById("sw-burger");
+    const panel = document.getElementById("sw-panel");
+    const close = document.getElementById("sw-close");
+
+    function onScroll() {
+      if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    function openPanel() {
+      panel && panel.classList.add("open");
+      panel && panel.setAttribute("aria-hidden", "false");
+      burger && burger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+    function closePanel() {
+      panel && panel.classList.remove("open");
+      panel && panel.setAttribute("aria-hidden", "true");
+      burger && burger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+    burger && burger.addEventListener("click", openPanel);
+    close && close.addEventListener("click", closePanel);
+    panel && panel.querySelectorAll("[data-mobile-link]").forEach((a) => {
+      a.addEventListener("click", closePanel);
+    });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePanel(); });
+  })();
+</script>
