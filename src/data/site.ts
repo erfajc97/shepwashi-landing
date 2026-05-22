@@ -10,7 +10,7 @@ export const NAV_LINKS = [
   { href: "#servicios",  label: "Servicios" },
   { href: "#marcas",     label: "Marcas" },
   { href: "#summit",     label: "Summit" },
-  { href: "#proyectos",  label: "Proyectos" },
+  { href: "#clientes",   label: "Clientes" },
   { href: "#contacto",   label: "Contacto" },
 ];
 
@@ -79,6 +79,8 @@ export const MARCAS = {
     {
       key: "luntriqa",
       name: "Luntriqa",
+      logo: "/images/luntriqa.webp",
+      logoH: 38,
       tag: "Vertical Insurtech",
       accent: "var(--acc-luntriqa)",
       body: "La vertical insurtech de Shepwashi para LATAM. Desarrollamos soluciones a la medida e implementamos IA para aseguradoras y brokers — con conocimiento profundo del sector y enfoque en resultados operativos reales.",
@@ -92,6 +94,8 @@ export const MARCAS = {
     {
       key: "tododomi",
       name: "TodoDomi",
+      logo: "/images/tododomi.PNG",
+      logoH: 56,
       tag: "Marca propia · Delivery premium",
       accent: "var(--acc-tododomi)",
       body: "La primera aplicación de delivery premium en las Islas Galápagos. Conecta a residentes y visitantes con los mejores comercios locales a través de una experiencia de entrega de alto nivel.",
@@ -105,6 +109,8 @@ export const MARCAS = {
     {
       key: "todoservy",
       name: "TodoServy",
+      logo: "/images/todoservy.PNG",
+      logoH: 52,
       tag: "Marca propia · Directorio de servicios",
       accent: "var(--acc-todoservy)",
       body: "El directorio universal de profesionales y servicios. Conecta a personas y empresas con los proveedores correctos de forma rápida, confiable y estructurada.",
@@ -121,15 +127,20 @@ export const MARCAS = {
 export const SUMMIT = {
   eyebrow: "Evento ancla",
   title: "Qarybe Summit",
+  bg: "/images/Four-Seasons-Hotel-and-Residences-swimmpool-in-Cartagena.webp",
+  fechas: "24 — 26 Septiembre · 2026",
+  sede: "Four Seasons Hotel · Cartagena, Colombia",
   copy: "Qarybe Summit es el espacio que Shepwashi creó para que los líderes de tecnología de LATAM se encuentren, debatan y construyan. No es una conferencia masiva: es una conversación exclusiva entre quienes toman decisiones.",
   ficha: [
-    { k: "Formato",      v: "Solo por invitación · Cupos limitados · Presencial" },
+    { k: "Fechas",       v: "24 — 26 de septiembre de 2026" },
+    { k: "Sede",         v: "Four Seasons Hotel — Cartagena, Colombia" },
+    { k: "Formato",      v: "Solo por invitación · Cupos limitados · Presencial · Todo incluido" },
     { k: "Audiencia",    v: "Líderes de tecnología, innovación, insurtech y fintech de LATAM" },
     { k: "Temáticas",    v: "IA aplicada · Desarrollo a medida · Insurtech · Fintech · Innovación" },
     { k: "Organizador",  v: "Producido por Shepwashi" },
   ],
   cta: "Solicitar invitación",
-  note: "Cupos limitados por edición.",
+  note: "Cupos limitados por edición. Experiencia todo incluido durante los tres días.",
 };
 
 export const PROYECTOS = {
@@ -229,7 +240,7 @@ export const CONTACTO = {
   eyebrow: "Hablemos",
   title: "¿Tienes un desafío tecnológico real?",
   body: "Cuéntanos qué quieres resolver. Nuestro equipo responde en menos de 24 horas con una perspectiva honesta, sin presión de venta.",
-  ctaSecondary: "Ver portafolio",
+  ctaSecondary: "Conocer nuestras marcas",
   note: "Respondemos en menos de 24 horas. Sin presión de venta.",
 };
 

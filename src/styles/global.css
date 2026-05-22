@@ -25,10 +25,10 @@
   --hint:   rgba(245, 240, 232, 0.42);
   --border: rgba(201, 168, 76, 0.22);
 
-  /* per-brand accents (marcas propias) */
-  --acc-luntriqa:  #c9a84c;
-  --acc-tododomi:  #d98c5f;
-  --acc-todoservy: #6f9bb3;
+  /* per-brand accents (marcas propias) — colores reales de cada logo */
+  --acc-luntriqa:  #6b5cf0;
+  --acc-tododomi:  #9ec882;
+  --acc-todoservy: #2bb6cf;
 
   --mx: 50%;
   --my: 30%;

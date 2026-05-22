@@ -18,7 +18,16 @@ import { MARCAS } from "@/data/site";
           <div class="marca-grid">
             <div class="marca-id">
               <p class="marca-tag">{m.tag}</p>
-              <h3 class="marca-name">{m.name}</h3>
+              <h3 class="marca-name">
+                <img
+                  src={m.logo}
+                  alt={m.name}
+                  class="marca-logo"
+                  loading="lazy"
+                  decoding="async"
+                  style={`height: ${m.logoH}px;`}
+                />
+              </h3>
             </div>
             <div class="marca-content">
               <p class="body-copy" style="margin-bottom: 22px;">{m.body}</p>
@@ -77,14 +86,15 @@ import { MARCAS } from "@/data/site";
     color: var(--acc);
     margin: 0 0 12px 0;
   }
-  .marca-name {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1;
-    color: var(--white);
-    letter-spacing: -1px;
-    margin: 0;
+  .marca-name { margin: 0; line-height: 0; }
+  .marca-logo {
+    width: auto;
+    max-width: 100%;
+    display: block;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.35));
+  }
+  @media (max-width: 880px) {
+    .marca-logo { height: auto !important; max-height: 44px; }
   }
 
   .marca-content { display: flex; flex-direction: column; }
