@@ -10,7 +10,7 @@ export const NAV_LINKS = [
   { href: "#servicios",  label: "Servicios" },
   { href: "#marcas",     label: "Marcas" },
   { href: "#summit",     label: "Summit" },
-  { href: "#clientes",   label: "Clientes" },
+  { href: "#proceso",    label: "Proceso" },
   { href: "#contacto",   label: "Contacto" },
 ];
 
@@ -30,7 +30,7 @@ export const HERO = {
 
 export const SERVICIOS = {
   eyebrow: "Lo que construimos",
-  title: "Tres focos, una visión",
+  title: "Nuestros pilares",
   bajada:
     "Seleccionamos tecnología según el resultado del cliente, no según la moda.",
   items: [
@@ -96,7 +96,7 @@ export const MARCAS = {
       name: "TodoDomi",
       logo: "/images/tododomi.PNG",
       logoH: 82,
-      tag: "Marca propia · Delivery premium",
+      tag: "Delivery premium",
       accent: "var(--acc-tododomi)",
       body: "La primera aplicación de delivery premium en las Islas Galápagos. Conecta a residentes y visitantes con los mejores comercios locales a través de una experiencia de entrega de alto nivel.",
       points: [
@@ -111,7 +111,7 @@ export const MARCAS = {
       name: "TodoServy",
       logo: "/images/todoservy.PNG",
       logoH: 72,
-      tag: "Marca propia · Directorio de servicios",
+      tag: "Directorio de servicios",
       accent: "var(--acc-todoservy)",
       body: "El directorio universal de profesionales y servicios. Conecta a personas y empresas con los proveedores correctos de forma rápida, confiable y estructurada.",
       points: [
