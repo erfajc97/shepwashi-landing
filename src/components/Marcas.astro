@@ -72,9 +72,10 @@ import { MARCAS } from "@/data/site";
     grid-template-columns: 0.85fr 1.6fr;
     gap: 40px;
     padding: 46px 44px;
+    align-items: center;
   }
   @media (max-width: 880px) {
-    .marca-grid { grid-template-columns: 1fr; gap: 22px; padding: 36px 26px; }
+    .marca-grid { grid-template-columns: 1fr; gap: 22px; padding: 36px 26px; align-items: start; }
   }
 
   .marca-tag {
@@ -94,7 +95,7 @@ import { MARCAS } from "@/data/site";
     filter: drop-shadow(0 4px 20px rgba(0,0,0,0.35));
   }
   @media (max-width: 880px) {
-    .marca-logo { height: auto !important; max-height: 44px; }
+    .marca-logo { height: auto !important; max-height: 62px; }
   }
 
   .marca-content { display: flex; flex-direction: column; }
