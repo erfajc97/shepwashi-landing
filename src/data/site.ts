@@ -18,13 +18,12 @@ export const HERO = {
   eyebrow: "Aliado tecnológico · LATAM",
   headline: "Tecnología que transforma operaciones reales",
   subhead:
-    "Consulting de IA, desarrollo a la medida e innovación en sectores clave. No somos un proveedor puntual.",
+    "Consulting de IA, desarrollo a la medida e innovación para las empresas que están definiendo la próxima década en LATAM.",
   ctaPrimary: "Habla con nuestro equipo",
   ctaSecondary: "Conocer nuestras marcas",
   metrics: [
-    { icon: "award",  value: "65+",   label: "Años de experiencia ejecutiva" },
-    { icon: "layers", value: "3",     label: "Marcas propias en el mercado" },
-    { icon: "globe",  value: "LATAM", label: "Presencia regional" },
+    { icon: "award", value: "100",   label: "Años revolucionando industrias" },
+    { icon: "globe", value: "LATAM", label: "Presencia regional" },
   ],
 };
 
@@ -32,7 +31,7 @@ export const SERVICIOS = {
   eyebrow: "Lo que construimos",
   title: "Nuestros pilares",
   bajada:
-    "Seleccionamos tecnología según el resultado del cliente, no según la moda.",
+    "Construimos la tecnología que convierte la ejecución en ventaja competitiva — no la que está de moda.",
   items: [
     {
       n: "I",
