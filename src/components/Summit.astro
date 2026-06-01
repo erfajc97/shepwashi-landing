@@ -9,34 +9,27 @@ import { SUMMIT } from "@/data/site";
   </div>
 
   <div class="section-pad relative" style="z-index: 2;">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-        <div class="fade-up">
-          <p class="eyebrow" style="margin-bottom: 18px;">{SUMMIT.eyebrow}</p>
-          <h2 style="font-family: var(--font-display); font-weight: 300; font-size: clamp(44px, 6vw, 80px); line-height: 1; color: var(--white); letter-spacing: -1.5px;">
-            {SUMMIT.title}
-          </h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="fade-up">
+        <p class="eyebrow" style="margin-bottom: 20px;">{SUMMIT.eyebrow}</p>
+        <h2 class="summit-name">{SUMMIT.name}</h2>
+        <p class="summit-phon">{SUMMIT.phon}</p>
+        <p class="summit-tag">{SUMMIT.tagline}</p>
+      </div>
 
-          <p class="h-italic-gold" style="margin-top: 14px;">{SUMMIT.fechas}</p>
-          <p class="microcopy" style="margin-top: 8px; color: var(--muted);">{SUMMIT.sede}</p>
-
-          <div class="divider-v" style="margin: 26px 0; height: 44px;"></div>
-          <p class="body-copy" style="max-width: 420px;">{SUMMIT.copy}</p>
-
-          <div style="margin-top: 32px;">
-            <a href="#contacto" class="btn-primary">{SUMMIT.cta}</a>
-            <p class="microcopy" style="margin-top: 16px; max-width: 360px;">{SUMMIT.note}</p>
+      <div class="fade-up summit-details" data-d="2">
+        {SUMMIT.details.map((f) => (
+          <div class="summit-d">
+            <span class="summit-k">{f.k}</span>
+            <span class="summit-v">{f.v}</span>
           </div>
-        </div>
+        ))}
+      </div>
 
-        <div class="fade-up summit-ficha" data-d="2">
-          {SUMMIT.ficha.map((f, i, arr) => (
-            <div class="summit-row" style={i < arr.length - 1 ? "border-bottom: 0.5px solid var(--border);" : ""}>
-              <span class="summit-k">{f.k}</span>
-              <span class="summit-v">{f.v}</span>
-            </div>
-          ))}
-        </div>
+      <p class="summit-intro fade-up" data-d="2">{SUMMIT.intro}</p>
+
+      <div class="fade-up" data-d="3" style="margin-top: 36px;">
+        <a href={SUMMIT.ctaHref} class="btn-ghost" target="_blank" rel="noopener">{SUMMIT.cta}</a>
       </div>
     </div>
   </div>
@@ -62,27 +55,61 @@ import { SUMMIT } from "@/data/site";
       radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12), transparent 60%);
   }
 
-  .summit-ficha {
-    border: 0.5px solid var(--border);
-    background: rgba(5, 14, 26, 0.55);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+  .summit-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 76px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 0.5px;
   }
-  .summit-row { padding: 20px 28px; display: flex; flex-direction: column; gap: 7px; transition: background 0.4s ease; }
-  .summit-row:hover { background: rgba(201, 168, 76, 0.05); }
+  .summit-phon {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 14px 0 0;
+  }
+  .summit-tag {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .summit-details {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 26px 0;
+  }
+  .summit-d { display: flex; flex-direction: column; gap: 6px; }
   .summit-k {
     font-family: var(--font-sans);
-    font-size: 8.5px;
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gold);
   }
   .summit-v {
     font-family: var(--font-sans);
-    font-size: 12.5px;
+    font-size: 15px;
     font-weight: 300;
-    line-height: 1.7;
     color: var(--white);
+  }
+  .summit-intro {
+    margin-top: 34px;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.5;
+    color: var(--muted);
+    max-width: 54ch;
   }
 </style>

@@ -1,0 +1,26 @@
+---
+import { TALENTO } from "@/data/site";
+---
+<section id="talento" class="talento-section section-pad relative">
+  <div class="talento-bg" aria-hidden="true"></div>
+  <div class="max-w-3xl mx-auto fade-up relative" style="z-index: 2;">
+    <p class="eyebrow" style="margin-bottom: 22px;">{TALENTO.eyebrow}</p>
+    <h2 class="h-section" style="margin-bottom: 24px;">{TALENTO.title}</h2>
+    <p class="h-italic-gold" style="max-width: 56ch; color: var(--muted); font-style: normal; font-family: var(--font-display); font-size: clamp(19px, 2.4vw, 26px); line-height: 1.5; margin-bottom: 36px;">
+      {TALENTO.lede}
+    </p>
+    <a href={TALENTO.ctaHref} class="btn-ghost">{TALENTO.cta}</a>
+  </div>
+</section>
+
+<style>
+  .talento-section {
+    border-top: 0.5px solid var(--border);
+    background: linear-gradient(160deg, #0d1c33, var(--navy2) 70%, var(--navy));
+    overflow: hidden;
+  }
+  .talento-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(70% 100% at 0% 0%, rgba(20,40,72,0.4), transparent 60%);
+  }
+</style>

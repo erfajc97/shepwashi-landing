@@ -1,0 +1,113 @@
+---
+import { PROYECTOS } from "@/data/site";
+---
+<section id="proyectos" class="section-pad relative" style="background: linear-gradient(180deg, var(--navy), var(--navy2));">
+  <div class="max-w-6xl mx-auto">
+    <div class="proj-head fade-up" style="margin-bottom: 56px;">
+      <p class="eyebrow" style="margin-bottom: 22px;">{PROYECTOS.eyebrow}</p>
+      <h2 class="h-section">{PROYECTOS.title}</h2>
+      <p class="h-italic-gold" style="margin-top: 22px; max-width: 60ch; color: var(--muted); font-style: normal; font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 24px);">
+        {PROYECTOS.lede}
+      </p>
+    </div>
+
+    <div class="proj-list">
+      {PROYECTOS.items.map((p, i) => (
+        <article class="proj-card fade-up" data-d={String(Math.min(3, i + 1))}>
+          <div class="proj-tag">{p.tag}</div>
+          {p.logo ? (
+            <img src={p.logo} alt={p.name} class="proj-logo" loading="lazy" decoding="async" style={`height: ${p.logoH}px;`} />
+          ) : (
+            <h3 class="proj-name">{p.name}</h3>
+          )}
+          <p class="proj-text">{p.body}</p>
+          <div class="proj-points">
+            {p.points.map((pt) => <span>{pt}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .proj-head { max-width: 60ch; }
+  .proj-list { display: flex; flex-direction: column; gap: 24px; }
+
+  .proj-card {
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    background: rgba(8, 16, 30, 0.5);
+    padding: 44px 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s ease;
+  }
+  .proj-card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+    opacity: 0.8;
+  }
+  .proj-card:hover { background: rgba(201,168,76,0.04); }
+  @media (max-width: 620px) { .proj-card { padding: 32px 26px; } }
+
+  .proj-tag {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .proj-logo {
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 18px;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.35));
+  }
+  @media (max-width: 620px) { .proj-logo { height: auto !important; max-height: 48px; } }
+  .proj-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(30px, 4.5vw, 46px);
+    color: var(--white);
+    margin: 0 0 16px 0;
+    letter-spacing: 0.5px;
+  }
+  .proj-text {
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+  .proj-points {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 30px;
+  }
+  @media (max-width: 620px) { .proj-points { grid-template-columns: 1fr; } }
+  .proj-points span {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .proj-points span::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+</style>

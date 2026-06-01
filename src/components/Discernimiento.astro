@@ -1,0 +1,124 @@
+---
+import { DISCERNIMIENTO as D } from "@/data/site";
+// Split big statement around the emphasized clause
+const bigParts = D.big.split(D.bigEm);
+---
+<section id="discernimiento" class="discern-section relative overflow-hidden">
+  <div class="discern-bg" aria-hidden="true"></div>
+  <div class="section-pad relative" style="z-index: 2;">
+    <div class="max-w-4xl mx-auto">
+      <p class="eyebrow fade-up" style="margin-bottom: 24px;">{D.eyebrow}</p>
+
+      <p class="discern-big fade-up" data-d="1">
+        {bigParts[0]}<em>{D.bigEm}</em>{bigParts[1]}
+      </p>
+
+      <p class="discern-sub fade-up" data-d="2" style="margin-top: 32px;">{D.sub1}</p>
+
+      <div class="stat-band fade-up" data-d="2">
+        {D.stats.map((s) => (
+          <div class="sb">
+            <div class="sb-n">{s.n}</div>
+            <div class="sb-t">{s.t}<span>{s.src}</span></div>
+          </div>
+        ))}
+      </div>
+
+      <div class="capex-line fade-up" data-d="2">
+        {D.capex.map((c) => (
+          <span class="cx"><b>{c.b}</b> {c.v}</span>
+        ))}
+        <span class="cx cx-note">{D.capexNote}</span>
+      </div>
+
+      <p class="discern-sub fade-up" data-d="2" style="margin-top: 36px;">{D.sub2}</p>
+      <p class="discern-sub fade-up" data-d="3" style="margin-top: 20px;">{D.sub3}</p>
+
+      <div class="discern-rule fade-up" data-d="3"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .discern-section {
+    background: linear-gradient(180deg, var(--navy2), var(--navy));
+    border-top: 0.5px solid var(--border);
+  }
+  .discern-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(80% 120% at 100% 0%, rgba(20,40,72,0.5), transparent 60%);
+  }
+
+  .discern-big {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 5vw, 56px);
+    line-height: 1.18;
+    color: var(--white);
+    letter-spacing: 0.3px;
+    max-width: 18ch;
+  }
+  .discern-big :global(em) { font-style: italic; color: var(--gold); }
+
+  .discern-sub {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+  .discern-sub :global(em) { font-style: italic; color: var(--gold); }
+  .discern-sub :global(strong) { color: var(--white); font-weight: 500; }
+
+  .stat-band {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 44px 0 30px;
+  }
+  @media (max-width: 620px) { .stat-band { grid-template-columns: 1fr; gap: 24px; } }
+  .sb { border-left: 2px solid var(--gold); padding: 6px 0 6px 22px; }
+  .sb-n {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 6vw, 60px);
+    color: var(--gold);
+    line-height: 1;
+  }
+  .sb-t {
+    margin-top: 12px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 34ch;
+  }
+  .sb-t span {
+    display: block;
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--hint);
+  }
+
+  .capex-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 26px;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .cx {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+  }
+  .cx b { color: var(--white); font-weight: 500; }
+  .cx-note { font-family: var(--font-display); font-style: italic; color: var(--gold); opacity: 0.85; }
+
+  .discern-rule { width: 60px; height: 2px; background: var(--gold); margin: 46px 0 0; }
+</style>

@@ -1,245 +1,201 @@
 export const SITE = {
   url: "https://shepwashi.com",
   name: "Shepwashi",
-  title: "Shepwashi — Aliado tecnológico de largo plazo en LATAM",
+  title: "Shepwashi — Inteligencia. Tecnología. Diseño. · LatAm & Caribe",
   description:
-    "Consulting de IA, desarrollo a la medida e innovación para empresas en LATAM. No somos un proveedor puntual: somos el equipo que acompaña la ejecución hasta que funciona.",
+    "La firma que sabe, construye y asesora — en LatAm & Caribe. Inteligencia ejecutiva, tecnología de frontera y soluciones a medida con IA.",
 };
 
 export const NAV_LINKS = [
-  { href: "#servicios",  label: "Servicios" },
-  { href: "#marcas",     label: "Marcas" },
-  { href: "#summit",     label: "Summit" },
-  { href: "#proceso",    label: "Proceso" },
-  { href: "#contacto",   label: "Contacto" },
+  { href: "#pilares",   label: "Quiénes somos" },
+  { href: "#summit",    label: "Summit" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#origen",    label: "Origen" },
+  { href: "#talento",   label: "Talento" },
+  { href: "#contacto",  label: "Contacto" },
 ];
 
 export const HERO = {
-  eyebrow: "Aliado tecnológico · LATAM",
-  headline: "Tecnología que transforma operaciones reales",
+  kicker: "LatAm & Caribe",
+  // tres líneas — la tercera en italic gold
+  lines: ["Inteligencia.", "Tecnología.", "Shepwashi."],
   subhead:
-    "Consulting de IA, desarrollo a la medida e innovación para las empresas que están definiendo la próxima década en LATAM.",
-  ctaPrimary: "Habla con nuestro equipo",
-  ctaSecondary: "Conocer nuestras marcas",
-  metrics: [
-    { icon: "award", value: "100",   label: "Años revolucionando industrias" },
-    { icon: "globe", value: "LATAM", label: "Presencia regional" },
-  ],
+    "La firma que sabe, construye y asesora. La inteligencia para saber qué construir — y la tecnología para construirlo.",
+  cta: "Diseñemos.",
+  gloss: {
+    word: "Shepwashi",
+    rest: "diseño en chukchansi, lengua indígena de California.",
+  },
 };
 
-export const SERVICIOS = {
-  eyebrow: "Lo que construimos",
-  title: "Nuestros pilares",
-  bajada:
-    "Construimos la tecnología que convierte la ejecución en ventaja competitiva — no la que está de moda.",
+// ── Pilares · Quiénes somos ──────────────────────────────────
+export const PILARES = {
+  eyebrow: "Quiénes somos",
+  title: "Una firma única en su clase.",
+  lede:
+    "Las globales entienden la tecnología pero no la región. Las locales conocen la región pero no tienen la profundidad técnica. Solo una firma vive en el cruce de las dos — en LatAm & Caribe.",
   items: [
     {
-      n: "I",
-      title: "Consulting de IA",
-      body: "Identificamos dónde la inteligencia artificial genera valor real en tu organización. Diseñamos, integramos y medimos — sin promesas vacías ni pilotos que nunca escalan.",
-      points: [
-        "Diagnóstico de madurez digital y oportunidades de IA",
-        "Diseño e implementación de agentes y flujos automatizados",
-        "Stack: OpenAI · Claude/Anthropic · Gemini · n8n · Make",
-        "Medición de ROI y acompañamiento post-implementación",
-      ],
+      idx: "I",
+      title: "Inteligencia",
+      es: "Sabe",
+      body: "Mentes de élite de disciplinas distintas, unidas por una sola destreza: leer el mercado, y trascenderlo. Economistas, estrategas y ejecutivos con posgrados avanzados que han convertido organizaciones en líderes de mercado. A eso sumamos una expertise geopolítica, histórica y socioeconómica de LatAm & Caribe — la diferencia entre usar tecnología y entender el terreno donde se aplica. Trabajamos a través de industrias — de fintech e insurtech a turismo, logística y capital privado.",
+      stat: { n: "75+", t: "años de experiencia ejecutiva de alto nivel · expertise regional" },
+      tags: ["Estrategia ejecutiva", "Geopolítica regional", "Gobierno & empresa"],
     },
     {
-      n: "II",
-      title: "Desarrollo a la medida",
-      body: "Software que encaja en tus procesos, no al revés. Desde integraciones complejas hasta plataformas completas, con foco en calidad de experiencia y seguridad desde el primer sprint.",
-      points: [
-        "Aplicaciones web y mobile full-stack",
-        "Integraciones con sistemas legados y APIs de terceros",
-        "UI/UX de alto nivel — diseño funcional, no decorativo",
-        "Ciberseguridad integrada en el proceso de desarrollo",
-      ],
+      idx: "II",
+      title: "Tecnología",
+      es: "Construye",
+      body: "Un equipo técnico de primer nivel, con capacidad de élite para construir lo que otros solo proponen. Construcción personalizada — tecnología hecha a la medida de cada organización — y soluciones que se adaptan a lo que el caso necesita. Inteligencia artificial implementada con criterio, y ciberseguridad integrada desde el primer trazo — no añadida al final. Lo más alto del estado del arte, construido para perdurar — potencia que se sostiene en el tiempo, no algo que se rehace.",
+      stat: { n: "IA · AI", t: "Inteligencia Artificial · Artificial Intelligence — construida, no improvisada" },
+      tags: ["Inteligencia Artificial · AI", "Construcción personalizada", "Soluciones a medida", "Ciberseguridad"],
     },
     {
-      n: "III",
-      title: "Ciberseguridad",
-      body: "Seguridad incorporada desde el primer sprint, no añadida al final. Protegemos datos, integraciones e infraestructura con estándares exigentes.",
-      points: [
-        "Seguridad integrada en el ciclo de desarrollo",
-        "Protección de datos e integraciones críticas",
-        "Revisión de vulnerabilidades y hardening de infraestructura",
-        "Buenas prácticas y cumplimiento del sector",
-      ],
+      idx: "III",
+      title: "Diseño",
+      es: "Shepwashi",
+      body: "Donde la inteligencia y la tecnología se vuelven una. Asesoría con la profundidad de quien también ejecuta — y cuando llega el momento de construir, lo hace el mismo equipo que lo pensó. Eso es diseño: la forma que toman las cosas hechas con intención.",
+      stat: null,
+      tags: ["Asesora", "Diseño + ejecución", "Un solo equipo"],
     },
   ],
 };
 
-export const MARCAS = {
-  eyebrow: "Nuestras marcas",
-  title: "Tecnología propia, mercados reales",
-  bajada:
-    "No solo construimos para otros. Shepwashi crea, lanza y opera sus propias marcas en sectores estratégicos de LATAM.",
+// ── Discernimiento · Sobre la IA ─────────────────────────────
+export const DISCERNIMIENTO = {
+  eyebrow: "Sobre la IA",
+  big: "La inteligencia artificial no es la respuesta a todo. Lo valioso es saber cuándo sí, y cuándo no.",
+  bigEm: "cuándo sí, y cuándo no.",
+  sub1:
+    "Te damos el criterio — y las herramientas — para decidir cuándo la IA entra en la ecuación y cuándo no. Y cuando sí corresponde, la implementamos de la forma correcta: lo que tiene sentido, donde genera valor real, sin gasto que no se justifica.",
+  stats: [
+    {
+      n: "$725 B",
+      t: "el gasto combinado en IA de Microsoft, Amazon, Google y Meta para 2026 — 77% más que el año récord anterior.",
+      src: "Financial Times, 2026",
+    },
+    {
+      n: "95%",
+      t: "de los pilotos de IA no generan ningún retorno medible.",
+      src: "MIT, 2025",
+    },
+  ],
+  capex: [
+    { b: "Amazon", v: "~$200 B" },
+    { b: "Microsoft", v: "~$190 B" },
+    { b: "Google", v: "~$185 B" },
+    { b: "Meta", v: "~$145 B" },
+  ],
+  capexNote: "— y sus propios inversionistas ya preguntan por el retorno.",
+  sub2:
+    "Estamos en plena ola — y la mayoría está construyendo sistemas que va a desechar. Nosotros nos posicionamos del otro lado: somos los que entienden cómo se verá esto cuando el boom se asiente. No se trata de gastar en IA ni de usarla por usarla. Se trata de integrar estos sistemas hoy, de forma sostenible — para que sigan sirviendo cuando el ruido pase, en lugar de volverse una carga ineficiente que toca arrancar y rehacer.",
+  sub3:
+    "Y no leemos el mercado desde afuera. Tenemos acceso a frentes que la mayoría no ve — desde IA sostenible hasta el conocimiento técnico de hacia dónde realmente avanza la tecnología. Ahí está la diferencia entre seguir la tendencia y entenderla.",
+};
+
+// ── Summit ───────────────────────────────────────────────────
+export const SUMMIT = {
+  eyebrow: "El evento que creamos",
+  name: "Qarybe Summit",
+  phon: "/ka·ri·be/",
+  tagline: "10,000 years in the making.",
+  bg: "/images/Four-Seasons-Hotel-and-Residences-swimmpool-in-Cartagena.webp",
+  details: [
+    { k: "Fechas", v: "24 — 26 Septiembre · 2026" },
+    { k: "Sede", v: "Four Seasons · Cartagena" },
+    { k: "Formato", v: "Solo por invitación" },
+  ],
+  intro:
+    "El espacio que Shepwashi creó para que los líderes de tecnología de la región se encuentren a puerta cerrada. Lo que se presenta aquí no se repite afuera.",
+  cta: "Conocer el Summit",
+  ctaHref: "https://qaribe.netlify.app/",
+};
+
+// ── Proyectos · Tecnología propia (in-house) ─────────────────
+// NOTA DEV: TodoDomi y TodoServy existen pero aún no se debutan por nombre.
+// El equipo aplica el nombre real, el logo y los assets cuando corresponda.
+export const PROYECTOS = {
+  eyebrow: "In-house",
+  title: "Tecnología propia.",
+  lede:
+    "Shepwashi crea, lanza y opera su propia tecnología en sectores estratégicos de la región. La prueba no se argumenta — se construye.",
   items: [
     {
-      key: "luntriqa",
+      tag: "Insurtech",
       name: "Luntriqa",
       logo: "/images/luntriqa.webp",
-      logoH: 58,
-      tag: "Vertical Insurtech",
-      accent: "var(--acc-luntriqa)",
-      body: "La vertical insurtech de Shepwashi para LATAM. Desarrollamos soluciones a la medida e implementamos IA para aseguradoras y brokers — con conocimiento profundo del sector y enfoque en resultados operativos reales.",
+      logoH: 52,
+      body: "La vertical insurtech de Shepwashi para LatAm & Caribe. Desarrollo y soluciones a la medida e inteligencia artificial para aseguradoras y brokers — con conocimiento profundo del sector.",
       points: [
-        "Desarrollo a la medida para aseguradoras y brokers",
-        "Implementación de IA en procesos del sector asegurador",
-        "Integraciones con sistemas legacy del mercado insurtech",
-        "Consultoría especializada en transformación digital del seguro",
+        "Desarrollo a medida para aseguradoras y brokers",
+        "Soluciones white-label, listas para operar",
+        "Integración con cualquier sistema o plataforma",
+        "Consultoría en IA e insurtech",
       ],
     },
     {
-      key: "tododomi",
-      name: "TodoDomi",
-      logo: "/images/tododomi.PNG",
-      logoH: 82,
       tag: "Delivery premium",
-      accent: "var(--acc-tododomi)",
-      body: "La primera aplicación de delivery premium en las Islas Galápagos. Conecta a residentes y visitantes con los mejores comercios locales a través de una experiencia de entrega de alto nivel.",
+      name: "Plataforma de delivery premium",
+      logo: null,
+      body: "Tecnología propia, ya operando en el mercado. Una plataforma de entrega de alto nivel nacida en uno de los entornos más exigentes y singulares de la región — y construida para escalar más allá de él.",
       points: [
         "App nativa para iOS y Android",
-        "Modelo premium: énfasis en calidad de producto y entrega",
-        "Ecosistema local: integra comercios galapagueños",
-        "Primera plataforma de este tipo en el archipiélago",
+        "Modelo premium — calidad de producto y de entrega",
+        "Integración de comercios locales en un solo ecosistema",
+        "Tecnología homegrown, en operación real",
       ],
     },
     {
-      key: "todoservy",
-      name: "TodoServy",
-      logo: "/images/todoservy.PNG",
-      logoH: 72,
-      tag: "Directorio de servicios",
-      accent: "var(--acc-todoservy)",
-      body: "El directorio universal de profesionales y servicios. Conecta a personas y empresas con los proveedores correctos de forma rápida, confiable y estructurada.",
+      tag: "Directorio · Servicios",
+      name: "Directorio de servicios",
+      logo: null,
+      body: "Un directorio al estilo de las grandes plataformas de reseñas — pero donde también se reservan servicios directamente. Una combinación que no existía cuando la construimos. Tecnología propia, probada en el mercado.",
       points: [
         "Directorio categorizado de profesionales y empresas",
-        "Sistema de perfiles verificados con valoraciones",
-        "Búsqueda por especialidad, ubicación y disponibilidad",
-        "Plataforma escalable a múltiples mercados en LATAM",
+        "Reserva de servicios dentro de la misma plataforma",
+        "Perfiles verificados y búsqueda por especialidad",
+        "+500.000 visitas orgánicas al directorio",
       ],
     },
   ],
 };
 
-export const SUMMIT = {
-  eyebrow: "Evento ancla",
-  title: "Qarybe Summit",
-  bg: "/images/Four-Seasons-Hotel-and-Residences-swimmpool-in-Cartagena.webp",
-  fechas: "24 — 26 Septiembre · 2026",
-  sede: "Four Seasons Hotel · Cartagena, Colombia",
-  copy: "Qarybe Summit es el espacio que Shepwashi creó para que los líderes de tecnología de LATAM se encuentren, debatan y construyan. No es una conferencia masiva: es una conversación exclusiva entre quienes toman decisiones.",
-  ficha: [
-    { k: "Fechas",       v: "24 — 26 de septiembre de 2026" },
-    { k: "Sede",         v: "Four Seasons Hotel — Cartagena, Colombia" },
-    { k: "Formato",      v: "Solo por invitación · Cupos limitados · Presencial · Todo incluido" },
-    { k: "Audiencia",    v: "Líderes de tecnología, innovación, insurtech y fintech de LATAM" },
-    { k: "Temáticas",    v: "IA aplicada · Desarrollo a medida · Insurtech · Fintech · Innovación" },
-    { k: "Organizador",  v: "Producido por Shepwashi" },
-  ],
-  cta: "Solicitar invitación",
-  note: "Cupos limitados por edición. Experiencia todo incluido durante los tres días.",
+// ── Origen ───────────────────────────────────────────────────
+export const ORIGEN = {
+  eyebrow: "Origen",
+  word: "SHEPWASHI",
+  gloss: "diseño · design",
+  intro:
+    "Una palabra del chukchansi yokuts, lengua de un pueblo originario de California, de hace miles de años. Significa diseño: la forma deliberada de las cosas.",
+  close:
+    "Y eso es exactamente lo que hacemos. La inteligencia para saber qué forma debe tomar algo, y la tecnología para construirla. Diseñar no es decorar — es decidir cómo serán las cosas antes de que existan. Por eso llevamos ese nombre. Por eso, diseñemos.",
 };
 
-export const PROYECTOS = {
-  eyebrow: "Portafolio",
-  title: "Trabajo real, impacto medible",
-  bajada:
-    "Un proyecto bien contado vale más que diez logos de herramientas. Esto es lo que hemos resuelto.",
-  items: [
-    {
-      vertical: "Insurtech",
-      title: "Plataforma de IA para aseguradoras",
-      problema: "Procesos de suscripción y siniestros lentos, manuales y dependientes de sistemas legacy.",
-      solucion: "Implementamos agentes de IA e integraciones que automatizan suscripción y validación de siniestros sobre la infraestructura existente.",
-      impacto: "Menos tiempo operativo por caso y decisiones más rápidas y consistentes.",
-      tech: ["OpenAI", "n8n", "APIs legacy", "Full-stack"],
-    },
-    {
-      vertical: "Delivery",
-      title: "App de delivery premium — Galápagos",
-      problema: "El archipiélago no contaba con un servicio de delivery confiable y de calidad.",
-      solucion: "Construimos una app nativa iOS/Android que conecta comercios locales con residentes y visitantes en una experiencia de entrega premium.",
-      impacto: "Primera plataforma de delivery premium operando en las Islas Galápagos.",
-      tech: ["React Native", "Node", "Maps", "Pagos"],
-    },
-    {
-      vertical: "Servicios",
-      title: "Directorio universal de servicios",
-      problema: "Encontrar profesionales confiables es lento, disperso y poco verificable.",
-      solucion: "Plataforma con perfiles verificados, valoraciones y búsqueda estructurada por especialidad, ubicación y disponibilidad.",
-      impacto: "Marketplace escalable, listo para crecer a múltiples mercados de LATAM.",
-      tech: ["Full-stack web", "Búsqueda", "Perfiles", "Cloud"],
-    },
-  ],
-  cta: "Ver portafolio completo",
-  // NOTA DEV: confirmar cifras e impacto reales con el equipo antes de publicar.
+// ── Equipo · Quién está detrás ───────────────────────────────
+export const EQUIPO = {
+  eyebrow: "Quién está detrás",
+  title: "Algunos equipos tienen experiencia. Este tiene historial.",
+  lede:
+    "Inversionistas, ejecutivos y profesionales que ya hicieron lo que la mayoría apenas promete. No es un portafolio de credenciales — es el peso de haber estado ahí antes.",
 };
 
-export const CLIENTES = {
-  eyebrow: "Empresas que confían en Shepwashi",
-  title: "Confianza construida con trabajo, no con discursos.",
-  body: "Acompañamos a empresas que ya tomaron la decisión de avanzar — desde aseguradoras hasta operadores de servicios y marcas de consumo en LATAM.",
-  // NOTA DEV: cuando haya logos o testimonios reales, reemplazar estas
-  // tarjetas de sector por el bloque de logos en escala de grises.
-  sectores: [
-    {
-      icon: "shield",
-      title: "Aseguradoras y brokers",
-      body: "Transformación digital e IA para el sector asegurador de la región.",
-    },
-    {
-      icon: "grid",
-      title: "Operadores de servicios",
-      body: "Plataformas, integraciones y automatización para empresas de servicios.",
-    },
-    {
-      icon: "spark",
-      title: "Marcas de consumo",
-      body: "Productos digitales y experiencias para marcas que están escalando.",
-    },
-  ],
+// ── Talento ──────────────────────────────────────────────────
+export const TALENTO = {
+  eyebrow: "Para los que construyen",
+  title: "Buscamos a los que no se conforman.",
+  lede:
+    "Las mentes más afiladas de la región — ingenieros, estrategas, diseñadores, gente que ya domina lo suyo y quiere construir algo que importe. No ofrecemos un trabajo. Ofrecemos formar parte de lo que estamos construyendo.",
+  cta: "Sumarse",
+  ctaHref: "mailto:talento@shepwashi.com",
 };
 
-export const PRINCIPIOS = {
-  eyebrow: "Cómo trabajamos",
-  title: "Alianza, no transacción",
-  bajada:
-    "Dos empresas pueden ofrecer los mismos servicios. La que explica cómo trabaja genera más confianza.",
-  items: [
-    {
-      n: "01",
-      title: "Diagnóstico honesto",
-      lead: "Antes de proponer, entendemos",
-      body: "Te decimos qué tiene sentido tecnológicamente y qué no — aunque eso signifique recomendar una solución más simple.",
-    },
-    {
-      n: "02",
-      title: "Tecnología adecuada",
-      lead: "Sin vendor lock-in innecesario",
-      body: "Seleccionamos el stack que mejor sirve al caso de uso, no el que nos es más cómodo vender.",
-    },
-    {
-      n: "03",
-      title: "Entrega iterativa",
-      lead: "Valor desde la primera fase",
-      body: "Sin esperar 6 meses para ver un resultado. Construimos en sprints cortos con revisión real contigo.",
-    },
-    {
-      n: "04",
-      title: "Acompañamiento real",
-      lead: "Post-lanzamiento seguimos en la mesa",
-      body: "Tu éxito operativo es nuestra métrica de éxito. No desaparecemos cuando el proyecto se entrega.",
-    },
-  ],
-};
-
+// ── Contacto ─────────────────────────────────────────────────
 export const CONTACTO = {
-  eyebrow: "Hablemos",
-  title: "¿Tienes un desafío tecnológico real?",
-  body: "Cuéntanos qué quieres resolver. Nuestro equipo responde en menos de 24 horas con una perspectiva honesta, sin presión de venta.",
-  ctaSecondary: "Conocer nuestras marcas",
+  eyebrow: "Diseñemos",
+  title: "Lo que sigue, lo construimos juntos.",
+  body: "Cuéntanos qué quieres resolver.",
+  cta: "Diseñemos.",
   note: "Respondemos en menos de 24 horas. Sin presión de venta.",
 };
 
@@ -247,3 +203,9 @@ export const CONTACTO = {
 // (https://formspree.io/f/XXXXXXX) o la API propia cuando esté lista.
 // Vacío = modo demo (muestra confirmación sin enviar).
 export const FORM_ENDPOINT = "";
+
+export const FOOTER = {
+  phon: "shep·wa·shi — diseño",
+  tagline: "La firma que sabe, construye y asesora — en LatAm & Caribe.",
+  region: "LatAm & Caribe",
+};

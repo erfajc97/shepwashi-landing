@@ -1,23 +1,28 @@
 ---
+import { FOOTER } from "@/data/site";
 const year = new Date().getFullYear();
 const navCol = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#marcas",    label: "Marcas" },
-  { href: "#summit",    label: "Qarybe Summit" },
-  { href: "#proceso",   label: "Proceso" },
-  { href: "#contacto",  label: "Contacto" },
+  { href: "#pilares",        label: "Quiénes somos" },
+  { href: "#discernimiento", label: "Sobre la IA" },
+  { href: "#proyectos",      label: "Proyectos" },
+  { href: "#summit",         label: "Qarybe Summit" },
+  { href: "#origen",         label: "Origen" },
+  { href: "#contacto",       label: "Contacto" },
 ];
-const marcasCol = ["Luntriqa", "TodoDomi", "TodoServy"];
+const ecosistema = [
+  { href: "https://qaribe.netlify.app/", label: "Qarybe Summit", ext: true },
+  { href: "#proyectos", label: "Luntriqa · Insurtech", ext: false },
+];
 ---
 <footer class="relative" style="background: var(--navy); border-top: 0.5px solid var(--border);">
   <div class="section-pad" style="padding-top: 64px; padding-bottom: 40px;">
     <div class="max-w-6xl mx-auto">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/images/logo.png" alt="Shepwashi" style="height: 30px; width: auto; margin-bottom: 18px;" />
-          <p class="body-copy" style="max-width: 320px; font-size: 12px;">
-            Aliado tecnológico de largo plazo para empresas en LATAM.
-            Consulting de IA, desarrollo a la medida e innovación.
+          <img src="/images/logo.png" alt="Shepwashi" style="height: 30px; width: auto; margin-bottom: 8px;" />
+          <p class="footer-phon">{FOOTER.phon}</p>
+          <p class="body-copy" style="max-width: 320px; font-size: 12px; margin-top: 14px;">
+            {FOOTER.tagline}
           </p>
         </div>
 
@@ -29,9 +34,15 @@ const marcasCol = ["Luntriqa", "TodoDomi", "TodoServy"];
         </div>
 
         <div class="footer-col">
-          <span class="footer-head">Marcas propias</span>
+          <span class="footer-head">Ecosistema</span>
           <ul>
-            {marcasCol.map((m) => <li><span class="footer-link footer-static">{m}</span></li>)}
+            {ecosistema.map((m) => (
+              <li>
+                {m.ext
+                  ? <a href={m.href} class="footer-link" target="_blank" rel="noopener">{m.label}</a>
+                  : <a href={m.href} class="footer-link">{m.label}</a>}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -40,7 +51,7 @@ const marcasCol = ["Luntriqa", "TodoDomi", "TodoServy"];
 
       <div class="footer-bottom">
         <span class="microcopy">© {year} Shepwashi · Todos los derechos reservados</span>
-        <span class="microcopy">Aliado tecnológico · LATAM</span>
+        <span class="microcopy">{FOOTER.region}</span>
       </div>
     </div>
   </div>
@@ -54,6 +65,14 @@ const marcasCol = ["Luntriqa", "TodoDomi", "TodoServy"];
   }
   @media (max-width: 760px) {
     .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .footer-phon {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--hint);
+    margin: 0;
   }
 
   .footer-head {

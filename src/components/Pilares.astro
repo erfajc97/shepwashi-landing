@@ -1,0 +1,121 @@
+---
+import { PILARES } from "@/data/site";
+---
+<section id="pilares" class="section-pad relative" style="background: var(--navy2);">
+  <div class="max-w-6xl mx-auto">
+    <div class="pilares-head fade-up" style="margin-bottom: 64px;">
+      <p class="eyebrow" style="margin-bottom: 22px;">{PILARES.eyebrow}</p>
+      <h2 class="h-section">{PILARES.title}</h2>
+      <p class="h-italic-gold" style="margin-top: 22px; max-width: 54ch; color: var(--muted); font-style: normal; font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 24px);">
+        {PILARES.lede}
+      </p>
+    </div>
+
+    {PILARES.items.map((p, i) => (
+      <article class="pilar fade-up" data-d={String(Math.min(3, i + 1))}>
+        <div class="pilar-idx">{p.idx}</div>
+        <div class="pilar-body">
+          <h3 class="pilar-title">{p.title}<span class="pilar-es">{p.es}</span></h3>
+          <p class="pilar-text">{p.body}</p>
+          {p.stat && (
+            <div class="pilar-stat">
+              <span class="ps-n">{p.stat.n}</span>
+              <span class="ps-t">{p.stat.t}</span>
+            </div>
+          )}
+          <div class="pilar-tags">
+            {p.tags.map((t) => <span class="pilar-tag">{t}</span>)}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .pilares-head { max-width: 62ch; }
+
+  .pilar {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 34px;
+    padding: 46px 0;
+    border-top: 0.5px solid var(--border);
+  }
+  .pilar:last-of-type { border-bottom: 0.5px solid var(--border); }
+  @media (max-width: 620px) { .pilar { grid-template-columns: 1fr; gap: 16px; } }
+
+  .pilar-idx {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 30px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .pilar-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 38px);
+    color: var(--white);
+    margin: 0 0 6px 0;
+    letter-spacing: 0.5px;
+  }
+  .pilar-es {
+    color: var(--gold);
+    font-style: italic;
+    font-size: 0.62em;
+    display: inline-block;
+    margin-left: 12px;
+    letter-spacing: 1px;
+  }
+  .pilar-text {
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--muted);
+    max-width: 62ch;
+    margin-top: 14px;
+  }
+  .pilar-stat {
+    margin-top: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-left: 2px solid var(--gold);
+    padding-left: 18px;
+  }
+  .ps-n {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--gold);
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+  .ps-t {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .pilar-tags {
+    margin-top: 22px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pilar-tag {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 0.5px solid var(--border);
+    color: var(--muted);
+    padding: 7px 14px;
+    border-radius: 20px;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  .pilar:hover .pilar-tag { border-color: rgba(201,168,76,0.4); }
+</style>
